@@ -12,6 +12,7 @@
 --------------------------------------------------------------*/
 /* Fonts */
 :root {
+  color-scheme: dark;
   --default-font: "Inter",  system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
   --heading-font: "Poppins",  sans-serif;
   --nav-font: "Inter",  sans-serif;
@@ -285,7 +286,7 @@ h6 {
   }
 
   .navmenu li:last-child a {
-    padding-right: 0;
+    padding-right: 15px;
   }
 
   .navmenu li:hover>a,
@@ -2016,6 +2017,7 @@ section,
 --------------------------------------------------------------*/
 body.light-mode,
 html.light-mode body {
+  color-scheme: light;
   --background-color: #f8fafc;
   --default-color: #475569;
   --heading-color: #0f172a;
@@ -2715,7 +2717,7 @@ body {
   -webkit-backdrop-filter: blur(16px) !important;
   border: 1px solid rgba(255, 255, 255, 0.12) !important;
   border-radius: 9999px !important;
-  padding: 4px !important;
+  padding: 4px 6px !important;
   list-style: none !important;
   margin: 0 !important;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3) !important;
@@ -2745,6 +2747,18 @@ body {
   line-height: 1.4 !important;
   text-shadow: none !important;
   outline: none !important;
+}
+
+.selloi-navmenu-capsule li:first-child a,
+.navmenu ul.selloi-navmenu-capsule li:first-child a,
+.navmenu .selloi-navmenu-capsule li:first-child a {
+  padding-left: 18px !important;
+}
+
+.selloi-navmenu-capsule li:last-child a,
+.navmenu ul.selloi-navmenu-capsule li:last-child a,
+.navmenu .selloi-navmenu-capsule li:last-child a {
+  padding-right: 18px !important;
 }
 
 .selloi-navmenu-capsule a:hover {

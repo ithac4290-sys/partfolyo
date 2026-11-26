@@ -36,6 +36,7 @@
 
   <style>
     :root {
+      color-scheme: dark;
       --admin-accent: #38bdf8;
       --admin-accent-glow: rgba(56, 189, 248, 0.25);
       --admin-success: #10b981;
@@ -251,7 +252,7 @@
     }
 
     /* Inputs */
-    .form-control, .form-select {
+    .form-control {
       background-color: rgba(255, 255, 255, 0.05);
       border: 1px solid rgba(255, 255, 255, 0.18);
       backdrop-filter: blur(10px);
@@ -262,20 +263,75 @@
       font-size: 14px;
       transition: all 0.2s ease;
     }
-    .form-control:focus, .form-select:focus {
+    .form-control:focus {
       background-color: rgba(255, 255, 255, 0.09);
       border-color: rgba(255, 255, 255, 0.6);
       color: #ffffff;
       box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.15);
     }
-    body.light-mode .form-control, body.light-mode .form-select {
+
+    /* Select Dropdowns - Dark Mode Native & Popup Styling */
+    .form-select, select.form-control, select {
+      color-scheme: dark !important;
+      background-color: #141416 !important;
+      border: 1px solid rgba(255, 255, 255, 0.22) !important;
+      color: #f4f4f5 !important;
+      border-radius: 10px;
+      padding: 10px 14px;
+      font-size: 14px;
+      transition: all 0.2s ease;
+      background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3e%3cpath fill='none' stroke='%2338bdf8' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='m2 5 6 6 6-6'/%3e%3c/svg%3e") !important;
+      background-repeat: no-repeat !important;
+      background-position: right 0.75rem center !important;
+      background-size: 16px 12px !important;
+      cursor: pointer;
+    }
+    .form-select:focus, select:focus {
+      background-color: #18181b !important;
+      border-color: #38bdf8 !important;
+      color: #ffffff !important;
+      box-shadow: 0 0 0 3px rgba(56, 189, 248, 0.25) !important;
+      outline: none !important;
+    }
+    .form-select option, select option {
+      background-color: #18181b !important;
+      color: #f4f4f5 !important;
+      padding: 12px 14px !important;
+      font-size: 14px !important;
+    }
+    .form-select option:checked, select option:checked {
+      background-color: #27272a !important;
+      color: #38bdf8 !important;
+      font-weight: 600;
+    }
+    .form-select option:hover, select option:hover {
+      background-color: #27272a !important;
+      color: #ffffff !important;
+    }
+
+    body.light-mode .form-control {
       background-color: #ffffff;
       border-color: #cbd5e1;
       color: #0f172a;
     }
-    body.light-mode .form-control:focus, body.light-mode .form-select:focus {
+    body.light-mode .form-control:focus {
       border-color: #0284c7;
       box-shadow: 0 0 0 3px rgba(2, 132, 199, 0.15);
+    }
+    body.light-mode .form-select, body.light-mode select {
+      color-scheme: light !important;
+      background-color: #ffffff !important;
+      border-color: #cbd5e1 !important;
+      color: #0f172a !important;
+      background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3e%3cpath fill='none' stroke='%23343a40' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='m2 5 6 6 6-6'/%3e%3c/svg%3e") !important;
+    }
+    body.light-mode .form-select:focus, body.light-mode select:focus {
+      border-color: #0284c7 !important;
+      box-shadow: 0 0 0 3px rgba(2, 132, 199, 0.15) !important;
+    }
+    body.light-mode .form-select option, body.light-mode select option {
+      background-color: #ffffff !important;
+      color: #0f172a !important;
     }
 
     /* Buttons */
