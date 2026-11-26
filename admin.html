@@ -434,7 +434,7 @@
           <label for="adminEmailInput" class="form-label small fw-semibold" style="color: var(--heading-color);">Admin Email</label>
           <div class="input-group">
             <span class="input-group-text bg-transparent border-secondary text-muted"><i class="bi bi-envelope-at-fill"></i></span>
-            <input type="email" class="form-control" id="adminEmailInput" placeholder="ithac4290@gmail.com" required autofocus autocomplete="username">
+            <input type="email" class="form-control" id="adminEmailInput" placeholder="admin@example.com" required autofocus autocomplete="username">
           </div>
         </div>
 
@@ -1017,7 +1017,7 @@
                   <h5 class="h6 fw-bold mb-2" style="color: var(--heading-color);">
                     <i class="bi bi-key-fill me-1 text-warning"></i> Admin Parolini O'zgartirish
                   </h5>
-                  <p class="small text-muted mb-3">Admin Email: <code>ithac4290@gmail.com</code> | Parol: <code>jahongir@1212</code></p>
+                  <p class="small text-muted mb-3">Tizimga kirish uchun admin parolini shu yerdan yangilashingiz mumkin.</p>
                   
                   <form id="changePassForm">
                     <div class="mb-3">
@@ -1449,7 +1449,7 @@
         });
       }
 
-      // Login Form Submit (Email & Password: ithac4290@gmail.com & jahongir@1212)
+      // Login Form Submit (Server-side Authentication via Golang Backend)
       document.getElementById('adminLoginForm').addEventListener('submit', async (e) => {
         e.preventDefault();
         const emailInput = document.getElementById('adminEmailInput');
@@ -1459,10 +1459,15 @@
         const alertEl = document.getElementById('loginAlert');
         const alertTextEl = document.getElementById('loginAlertText');
 
-        const REQUIRED_EMAIL = 'ithac4290@gmail.com';
-        const REQUIRED_PASS = 'jahongir@1212';
+        if (!email || !pass) {
+          if (alertEl) {
+            if (alertTextEl) alertTextEl.textContent = "Iltimos, email va parolni to'liq kiriting.";
+            alertEl.classList.remove('d-none');
+          }
+          return;
+        }
 
-        // 1. Try Go backend /api/auth/login
+        // Send to Go backend /api/auth/login for secure verification
         try {
           const res = await fetch('/api/auth/login', {
             method: 'POST',
@@ -1476,19 +1481,16 @@
             if (alertEl) alertEl.classList.add('d-none');
             doLoginSuccess();
             return;
+          } else {
+            if (alertEl) {
+              if (alertTextEl) alertTextEl.textContent = data.error || "Email yoki parol noto'g'ri!";
+              alertEl.classList.remove('d-none');
+            }
           }
         } catch (netErr) {
           console.warn('Backend login connection error:', netErr);
-        }
-
-        // 2. Exact match check
-        if (email.toLowerCase() === REQUIRED_EMAIL.toLowerCase() && pass === REQUIRED_PASS) {
-          if (alertEl) alertEl.classList.add('d-none');
-          sessionStorage.setItem('workfolio_admin_email', email);
-          doLoginSuccess();
-        } else {
           if (alertEl) {
-            if (alertTextEl) alertTextEl.textContent = "Email yoki parol noto'g'ri! Iltimos, qayta tekshiring.";
+            if (alertTextEl) alertTextEl.textContent = "Server bilan bog'lanishda xatolik yuz berdi.";
             alertEl.classList.remove('d-none');
           }
         }
@@ -1530,23 +1532,8 @@
           }
         }
 
-        // 2. Auth with Golang Backend & Sync Messages
-        let token = sessionStorage.getItem('go_admin_token');
-        if (!token) {
-          const pass = document.getElementById('adminPassInput')?.value.trim() || 'jahongir@1212';
-          const email = document.getElementById('adminEmailInput')?.value.trim() || 'ithac4290@gmail.com';
-          const authRes = await fetch('/api/auth/login', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ email: email, password: pass })
-          });
-          if (authRes.ok) {
-            const authData = await authRes.json();
-            token = authData.token;
-            if (token) sessionStorage.setItem('go_admin_token', token);
-          }
-        }
-
+        // 2. Fetch server messages if authenticated
+        const token = sessionStorage.getItem('go_admin_token');
         if (token) {
           const msgRes = await fetch('/api/messages', {
             headers: { 'Authorization': 'Bearer ' + token }

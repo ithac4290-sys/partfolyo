@@ -312,7 +312,7 @@ func (app *AppState) handleLogin(w http.ResponseWriter, r *http.Request) {
 	}
 	passInput := strings.TrimSpace(req.Password)
 
-	// Admin credential check: ithac4290@gmail.com and jahongir@1212
+	// Admin credential check against environment settings
 	if !strings.EqualFold(emailInput, app.adminEmail) || hashPassword(passInput) != app.adminPassHash {
 		time.Sleep(200 * time.Millisecond) // mitigate brute-force
 		writeJSON(w, http.StatusUnauthorized, map[string]interface{}{"error": "Email yoki parol noto'g'ri"})
