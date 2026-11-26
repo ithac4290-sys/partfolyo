@@ -2697,45 +2697,112 @@ body {
   margin: 0;
 }
 
-/* Center Floating Pill Menu */
+/* Center Floating Pill Menu (Selloi style) */
+@media (min-width: 1200px) {
+  .navmenu {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+}
+
 .selloi-navmenu-capsule {
-  display: inline-flex;
-  align-items: center;
-  gap: 4px;
-  background: rgba(255, 255, 255, 0.04);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  border-radius: 9999px;
-  padding: 4px 6px;
-  list-style: none;
-  margin: 0;
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 3px !important;
+  background: rgba(255, 255, 255, 0.05) !important;
+  backdrop-filter: blur(16px) !important;
+  -webkit-backdrop-filter: blur(16px) !important;
+  border: 1px solid rgba(255, 255, 255, 0.12) !important;
+  border-radius: 9999px !important;
+  padding: 4px !important;
+  list-style: none !important;
+  margin: 0 !important;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3) !important;
 }
 
 .selloi-navmenu-capsule li {
-  margin: 0;
-  padding: 0;
+  margin: 0 !important;
+  padding: 0 !important;
+  display: inline-flex !important;
+  align-items: center !important;
 }
 
 .selloi-navmenu-capsule a {
-  display: inline-block;
-  color: #a1a1aa !important;
-  text-decoration: none;
-  font-size: 14px;
-  font-weight: 500;
-  padding: 7px 18px;
-  border-radius: 9999px;
-  transition: all 0.2s ease;
-  white-space: nowrap;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  color: #d4d4d8 !important;
+  text-decoration: none !important;
+  font-size: 14px !important;
+  font-weight: 500 !important;
+  padding: 6px 18px !important;
+  border-radius: 9999px !important;
+  border: 1px solid transparent !important;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1) !important;
+  white-space: nowrap !important;
+  position: relative !important;
+  line-height: 1.4 !important;
+  text-shadow: none !important;
+  outline: none !important;
 }
 
 .selloi-navmenu-capsule a:hover {
   color: #ffffff !important;
+  background: rgba(255, 255, 255, 0.08) !important;
+  border-color: rgba(255, 255, 255, 0.1) !important;
+  text-shadow: none !important;
 }
 
-.selloi-navmenu-capsule a.active {
+.selloi-navmenu-capsule a.active,
+.selloi-navmenu-capsule .active,
+.selloi-navmenu-capsule a.active:focus {
   color: #ffffff !important;
-  background: rgba(255, 255, 255, 0.09) !important;
-  border: 1px solid rgba(255, 255, 255, 0.2) !important;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.25) !important;
+  background: rgba(255, 255, 255, 0.14) !important;
+  border: 1px solid rgba(255, 255, 255, 0.22) !important;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.25) !important;
+  text-shadow: none !important;
+}
+
+/* Completely remove underline pseudo-element inside capsule */
+.selloi-navmenu-capsule a::after,
+.selloi-navmenu-capsule a:focus::after,
+.selloi-navmenu-capsule a:hover::after,
+.selloi-navmenu-capsule a.active::after,
+.selloi-navmenu-capsule .active::after,
+.selloi-navmenu-capsule li:hover > a::after {
+  display: none !important;
+  content: none !important;
+  opacity: 0 !important;
+  visibility: hidden !important;
+  transform: scaleX(0) !important;
+  width: 0 !important;
+  height: 0 !important;
+  border: none !important;
+  background: transparent !important;
+}
+
+/* Light mode support for capsule */
+body.light-mode .selloi-navmenu-capsule {
+  background: rgba(0, 0, 0, 0.04) !important;
+  border-color: rgba(0, 0, 0, 0.09) !important;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06) !important;
+}
+
+body.light-mode .selloi-navmenu-capsule a {
+  color: #52525b !important;
+}
+
+body.light-mode .selloi-navmenu-capsule a:hover {
+  color: #18181b !important;
+  background: rgba(0, 0, 0, 0.05) !important;
+}
+
+body.light-mode .selloi-navmenu-capsule a.active {
+  color: #18181b !important;
+  background: #ffffff !important;
+  border: 1px solid rgba(0, 0, 0, 0.1) !important;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1) !important;
 }
 
 /* Header Right Pills */
@@ -3192,12 +3259,34 @@ body {
   border-radius: 9999px;
 }
 
-@media (max-width: 991.98px) {
+@media (max-width: 1199.98px) {
   .selloi-hero-heading {
     font-size: 38px;
   }
   .selloi-navmenu-capsule {
-    display: none;
+    display: none !important;
+  }
+  .mobile-nav-active .selloi-navmenu-capsule {
+    display: flex !important;
+    flex-direction: column !important;
+    position: fixed !important;
+    top: 75px !important;
+    left: 20px !important;
+    right: 20px !important;
+    border-radius: 18px !important;
+    padding: 12px !important;
+    gap: 6px !important;
+    background: rgba(18, 18, 20, 0.98) !important;
+    border: 1px solid rgba(255, 255, 255, 0.15) !important;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.8) !important;
+    z-index: 99999 !important;
+  }
+  .mobile-nav-active .selloi-navmenu-capsule a {
+    width: 100% !important;
+    padding: 12px 18px !important;
+    border-radius: 12px !important;
+    justify-content: flex-start !important;
+    font-size: 16px !important;
   }
   .selloi-metrics-grid {
     grid-template-columns: repeat(2, 1fr);
