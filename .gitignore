@@ -1,0 +1,17 @@
+# Binaries
+backend/server
+*.exe
+*.exe~
+*.dll
+*.so
+*.dylib
+
+# Runtime data
+backend/data/*.json
+!backend/data/.gitkeep
+
+# Logs and temp
+*.log
+.DS_Store
+.idea/
+.vscode/

@@ -1,0 +1,735 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <title>Jahongir Mirzayev | mirzayev-jahongir.uz — Full-Stack Dasturchi Portfolio</title>
+  <meta name="description" content="Jahongir Mirzayev — Full-Stack dasturchi va muhandis. Zamonaviy veb-saytlar, Telegram botlar, Mini Applar va dasturiy ta'minot yaratish xizmati. mirzayev-jahongir.uz rasmiy portfolio sayti.">
+  <meta name="keywords" content="mirzayev jahongir, mirzayev-jahongir, mirzayev jahongir uz, mirzayev-jahongir.uz, jahongir mirzayev, jahongir code, jahongircode, full stack dasturchi, dasturchi portfolio">
+  <meta name="author" content="Jahongir Mirzayev">
+  <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+  <link rel="canonical" href="https://mirzayev-jahongir.uz/">
+
+  <!-- OpenGraph / Social Media -->
+  <meta property="og:locale" content="uz_UZ">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Jahongir Mirzayev | mirzayev-jahongir.uz — Full-Stack Dasturchi">
+  <meta property="og:description" content="Jahongir Mirzayev — Full-Stack dasturchi va muhandis. Veb-saytlar, Telegram botlar va raqamli yechimlar.">
+  <meta property="og:url" content="https://mirzayev-jahongir.uz/">
+  <meta property="og:site_name" content="mirzayev-jahongir.uz">
+  <meta property="og:image" content="https://mirzayev-jahongir.uz/assets/img/logo.png">
+  <meta property="og:image:width" content="960">
+  <meta property="og:image:height" content="960">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Jahongir Mirzayev | mirzayev-jahongir.uz — Full-Stack Dasturchi">
+  <meta name="twitter:description" content="Jahongir Mirzayev — Full-Stack dasturchi va muhandis portfolio sayti.">
+  <meta name="twitter:image" content="https://mirzayev-jahongir.uz/assets/img/logo.png">
+
+  <!-- Structured Data (JSON-LD) for Search Engines -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebSite",
+        "@id": "https://mirzayev-jahongir.uz/#website",
+        "url": "https://mirzayev-jahongir.uz/",
+        "name": "Jahongir Mirzayev Portfolio",
+        "alternateName": ["mirzayev jahongir", "mirzayev-jahongir", "mirzayev-jahongir uz", "Jahongir Code"],
+        "publisher": {
+          "@id": "https://mirzayev-jahongir.uz/#person"
+        }
+      },
+      {
+        "@type": "Person",
+        "@id": "https://mirzayev-jahongir.uz/#person",
+        "name": "Jahongir Mirzayev",
+        "url": "https://mirzayev-jahongir.uz/",
+        "image": "https://mirzayev-jahongir.uz/assets/img/logo.png",
+        "jobTitle": "Full-Stack Dasturchi",
+        "knowsAbout": ["JavaScript", "Python", "Full-Stack Web Development", "Telegram Bot", "API", "Web Design"],
+        "description": "Professional Full-Stack dasturchi va dasturiy muhandis."
+      }
+    ]
+  }
+  </script>
+
+  <!-- Favicons -->
+  <link href="favicon.ico?v=20261126" rel="shortcut icon" type="image/x-icon">
+  <link href="assets/img/favicon.png?v=20261126" rel="icon" type="image/png">
+  <link href="assets/img/apple-touch-icon.png?v=20261126" rel="apple-touch-icon">
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com" rel="preconnect">
+  <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Vendor CSS Files CDN -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" rel="stylesheet">
+
+  <!-- Main CSS File -->
+  <link href="assets/css/main.css" rel="stylesheet">
+
+  <script>
+    (function() {
+      var savedTheme = localStorage.getItem('workfolio_theme') || 'dark';
+      if (savedTheme === 'light') {
+        document.documentElement.classList.add('light-mode');
+      }
+    })();
+  </script>
+</head>
+
+<body class="index-page">
+
+  <header id="header" class="header d-flex align-items-center sticky-top">
+    <div class="container-fluid container-xl position-relative d-flex align-items-center justify-content-between">
+
+      <!-- Portfolio Brand Logo -->
+      <a href="/" class="logo d-flex align-items-center text-decoration-none">
+        <img src="assets/img/logo.png" alt="Jahongir Code" class="me-2 rounded-circle" style="width: 36px; height: 36px; object-fit: cover;">
+        <span class="sitename fw-bold" style="font-size: 21px; color: #ffffff; letter-spacing: -0.02em;">Jahongir<span style="color: #38bdf8;"> Code</span></span>
+      </a>
+
+      <!-- Center Floating Pill Menu -->
+      <nav id="navmenu" class="navmenu">
+        <ul class="selloi-navmenu-capsule">
+          <li><a href="#hero" class="active" data-i18n="nav_home">Bosh sahifa</a></li>
+          <li><a href="#about" data-i18n="nav_about">Men haqimda</a></li>
+          <li><a href="#services" data-i18n="nav_services">Xizmatlar</a></li>
+          <li><a href="#portfolio" data-i18n="nav_portfolio">Portfolio</a></li>
+          <li><a href="#contact" data-i18n="nav_contact">Bog'lanish</a></li>
+        </ul>
+        <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
+      </nav>
+
+      <!-- Right Controls (Uz, Kirish) -->
+      <div class="header-controls d-flex align-items-center gap-2">
+        <!-- Language Switcher Dropdown (3 ta til: Uz, En, Ru) -->
+        <div class="dropdown lang-dropdown">
+          <a class="selloi-pill-btn dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" id="current-lang-label">
+            Uz
+          </a>
+          <ul class="dropdown-menu dropdown-menu-end">
+            <li><a class="dropdown-item lang-select-item active" href="#" data-lang="uz">O'zbekcha</a></li>
+            <li><a class="dropdown-item lang-select-item" href="#" data-lang="en">English</a></li>
+            <li><a class="dropdown-item lang-select-item" href="#" data-lang="ru">Русский</a></li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+  </header>
+
+  <main class="main">
+
+    <!-- Hero Section -->
+    <section id="hero" class="hero section">
+
+      <div class="container" data-aos="fade-up" data-aos-delay="100">
+
+        <div class="row justify-content-center text-center">
+          <div class="col-lg-9" data-aos="fade-up" data-aos-delay="100">
+            <div class="avatar"><img src="assets/img/logo.png" alt="Jahongir Code" class="img-fluid" style="width: 100%; height: 100%; object-fit: cover;"></div>
+            <span class="status"><span class="ping"></span> <span class="hero-status-text" data-i18n="hero_status">Yangi loyihalar uchun ochiq</span></span>
+            <h1><span data-i18n="hero_title_pre" data-i18n-html>Men <span class="profile-name-text">Jahongir Mirzayev</span>,</span> <span class="hl profile-role-text" data-i18n="hero_title_hl">Full-Stack dasturchi</span> <span data-i18n="hero_title_post">va dasturiy muhandisman. Yuqori sifatli raqamli yechimlar yarataman.</span></h1>
+            <p class="lead hero-lead-text" data-i18n="hero_lead">Zamonaviy veb-saytlar, Telegram botlar, Mini Applar va mobil ilovalar yaratish bo'yicha professional Full-Stack dasturchi. Yuqori sifat, tezkorlik va toza arxitektura kafolati.</p>
+            <div class="actions d-flex align-items-center justify-content-center gap-3 flex-wrap">
+              <a href="#portfolio" class="btn-main" data-i18n="hero_btn_work">Loyihalarimni ko'rish</a>
+              <a href="#contact" class="btn-line"><span data-i18n="hero_btn_talk">Bog'lanish</span> <i class="bi bi-arrow-right"></i></a>
+            </div>
+            <div class="socials" data-aos="fade-up" data-aos-delay="200">
+              <a href="https://t.me" aria-label="Telegram" class="social-telegram" target="_blank"><i class="bi bi-telegram"></i></a>
+              <a href="https://github.com" aria-label="GitHub" class="social-github" target="_blank"><i class="bi bi-github"></i></a>
+              <a href="https://linkedin.com" aria-label="LinkedIn" class="social-linkedin" target="_blank"><i class="bi bi-linkedin"></i></a>
+              <a href="#" aria-label="Twitter" class="social-twitter" target="_blank"><i class="bi bi-twitter-x"></i></a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+    </section><!-- /Hero Section -->
+
+    <!-- Clients Section -->
+    <section id="clients" class="clients section">
+
+      <div class="container" data-aos="fade-up" data-aos-delay="100">
+
+        <p class="eyebrow" data-i18n="clients_eyebrow">Trusted by forward-thinking teams and studios</p>
+
+        <div class="row g-4 align-items-center justify-content-center logos">
+          <div class="col-lg-2 col-md-3 col-4"><img src="assets/img/clients/clients-1.webp" alt="Client logo" class="img-fluid" loading="lazy"></div>
+          <div class="col-lg-2 col-md-3 col-4"><img src="assets/img/clients/clients-2.webp" alt="Client logo" class="img-fluid" loading="lazy"></div>
+          <div class="col-lg-2 col-md-3 col-4"><img src="assets/img/clients/clients-3.webp" alt="Client logo" class="img-fluid" loading="lazy"></div>
+          <div class="col-lg-2 col-md-3 col-4"><img src="assets/img/clients/clients-4.webp" alt="Client logo" class="img-fluid" loading="lazy"></div>
+          <div class="col-lg-2 col-md-3 col-4"><img src="assets/img/clients/clients-5.webp" alt="Client logo" class="img-fluid" loading="lazy"></div>
+          <div class="col-lg-2 col-md-3 col-4"><img src="assets/img/clients/clients-6.webp" alt="Client logo" class="img-fluid" loading="lazy"></div>
+        </div>
+
+      </div>
+
+    </section><!-- /Clients Section -->
+
+    <!-- About Section -->
+    <section id="about" class="about section light-background">
+
+      <!-- Section Title -->
+      <div class="container section-title" data-aos="fade-up">
+        <h2 data-i18n="about_title">About Me</h2>
+        <p data-i18n="about_subtitle">A short story, and a few numbers that sum up the journey</p>
+      </div><!-- End Section Title -->
+
+      <div class="container">
+
+        <div class="row justify-content-center">
+          <div class="col-lg-9 text-center" data-aos="fade-up" data-aos-delay="100">
+            <p class="story" data-i18n="about_story">I'm a multidisciplinary product designer and front-end developer based in Austin, Texas. I help founders turn rough ideas into refined, usable products — pairing research-driven design decisions with clean, accessible code. When I'm not pushing pixels you'll find me sketching type, mentoring juniors, or chasing good coffee.</p>
+          </div>
+        </div>
+
+        <div class="row g-4 counters" data-aos="fade-up" data-aos-delay="200">
+          <div class="col-lg-3 col-6">
+            <div class="counter"><span data-purecounter-start="0" data-purecounter-end="8" data-purecounter-duration="1" class="purecounter">8</span><span class="plus">+</span>
+              <p data-i18n="stat_years">Years Experience</p>
+            </div>
+          </div>
+          <div class="col-lg-3 col-6">
+            <div class="counter"><span data-purecounter-start="0" data-purecounter-end="120" data-purecounter-duration="1" class="purecounter">120</span><span class="plus">+</span>
+              <p data-i18n="stat_projects">Projects Shipped</p>
+            </div>
+          </div>
+          <div class="col-lg-3 col-6">
+            <div class="counter"><span data-purecounter-start="0" data-purecounter-end="48" data-purecounter-duration="1" class="purecounter">48</span>
+              <p data-i18n="stat_clients">Happy Clients</p>
+            </div>
+          </div>
+          <div class="col-lg-3 col-6">
+            <div class="counter"><span data-purecounter-start="0" data-purecounter-end="16" data-purecounter-duration="1" class="purecounter">16</span>
+              <p data-i18n="stat_awards">Awards Won</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+    </section><!-- /About Section -->
+
+    <!-- Services Section -->
+    <section id="services" class="services section">
+
+      <!-- Section Title -->
+      <div class="container section-title" data-aos="fade-up">
+        <h2 data-i18n="services_title">What I Do</h2>
+        <p data-i18n="services_subtitle">A focused set of services, delivered end to end</p>
+      </div><!-- End Section Title -->
+
+      <div class="container">
+
+        <div class="row g-0 service-rows">
+
+          <div class="col-12" data-aos="fade-up" data-aos-delay="100">
+            <a href="/service-details" class="row-item"><span class="n">01</span>
+              <div class="body">
+                <h3 data-i18n="service_1_title">UI / UX Design</h3>
+                <p data-i18n="service_1_desc">Research-led interfaces with clear hierarchy and effortless flows.</p>
+              </div><i class="bi bi-arrow-up-right"></i>
+            </a>
+          </div>
+          <div class="col-12" data-aos="fade-up" data-aos-delay="150">
+            <a href="/service-details" class="row-item"><span class="n">02</span>
+              <div class="body">
+                <h3 data-i18n="service_2_title">Front-End Development</h3>
+                <p data-i18n="service_2_desc">Pixel-accurate, accessible builds in modern frameworks.</p>
+              </div><i class="bi bi-arrow-up-right"></i>
+            </a>
+          </div>
+          <div class="col-12" data-aos="fade-up" data-aos-delay="200">
+            <a href="/service-details" class="row-item"><span class="n">03</span>
+              <div class="body">
+                <h3 data-i18n="service_3_title">Design Systems</h3>
+                <p data-i18n="service_3_desc">Scalable component libraries that keep teams shipping consistently.</p>
+              </div><i class="bi bi-arrow-up-right"></i>
+            </a>
+          </div>
+          <div class="col-12" data-aos="fade-up" data-aos-delay="250">
+            <a href="/service-details" class="row-item"><span class="n">04</span>
+              <div class="body">
+                <h3 data-i18n="service_4_title">Brand &amp; Identity</h3>
+                <p data-i18n="service_4_desc">Distinct visual identities that give products a memorable voice.</p>
+              </div><i class="bi bi-arrow-up-right"></i>
+            </a>
+          </div>
+          <div class="col-12" data-aos="fade-up" data-aos-delay="300">
+            <a href="/service-details" class="row-item"><span class="n">05</span>
+              <div class="body">
+                <h3 data-i18n="service_5_title">Product Strategy</h3>
+                <p data-i18n="service_5_desc">Turning fuzzy goals into focused, validated roadmaps.</p>
+              </div><i class="bi bi-arrow-up-right"></i>
+            </a>
+          </div>
+
+        </div>
+
+      </div>
+
+    </section><!-- /Services Section -->
+
+    <!-- Skills Section -->
+    <section id="skills" class="skills section light-background">
+
+      <!-- Section Title -->
+      <div class="container section-title" data-aos="fade-up">
+        <h2 data-i18n="skills_title">Skills &amp; Tools</h2>
+        <p data-i18n="skills_subtitle">The craft and software I reach for every day</p>
+      </div><!-- End Section Title -->
+
+      <div class="container">
+
+        <div class="row g-5 align-items-center">
+
+          <div class="col-lg-5" data-aos="fade-right" data-aos-delay="100">
+            <div class="intro">
+              <h3 data-i18n="skills_intro_title">A blend of design taste and engineering rigor.</h3>
+              <p data-i18n="skills_intro_desc">I move comfortably between the canvas and the codebase, which means designs stay faithful from concept to production. Here's where I spend most of my time.</p>
+              <div class="tags">
+                <span>Figma</span>
+                <span>React</span>
+                <span>TypeScript</span>
+                <span>SCSS</span>
+                <span>Webflow</span>
+                <span>Framer</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-7" data-aos="fade-left" data-aos-delay="200">
+            <div class="skills-animation">
+
+              <div class="progress">
+                <span class="skill"><span class="name" data-i18n="skill_1">Interface Design</span> <i class="val">95%</i></span>
+                <div class="bar">
+                  <div class="progress-bar" role="progressbar" aria-valuenow="95" aria-valuemin="0" aria-valuemax="100" style="width: 95%;"></div>
+                </div>
+              </div>
+
+              <div class="progress">
+                <span class="skill"><span class="name" data-i18n="skill_2">Front-End Development</span> <i class="val">90%</i></span>
+                <div class="bar">
+                  <div class="progress-bar" role="progressbar" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100" style="width: 90%;"></div>
+                </div>
+              </div>
+
+              <div class="progress">
+                <span class="skill"><span class="name" data-i18n="skill_3">Design Systems</span> <i class="val">88%</i></span>
+                <div class="bar">
+                  <div class="progress-bar" role="progressbar" aria-valuenow="88" aria-valuemin="0" aria-valuemax="100" style="width: 88%;"></div>
+                </div>
+              </div>
+
+              <div class="progress">
+                <span class="skill"><span class="name" data-i18n="skill_4">Prototyping &amp; Motion</span> <i class="val">82%</i></span>
+                <div class="bar">
+                  <div class="progress-bar" role="progressbar" aria-valuenow="82" aria-valuemin="0" aria-valuemax="100" style="width: 82%;"></div>
+                </div>
+              </div>
+
+              <div class="progress">
+                <span class="skill"><span class="name" data-i18n="skill_5">Brand &amp; Visual Identity</span> <i class="val">78%</i></span>
+                <div class="bar">
+                  <div class="progress-bar" role="progressbar" aria-valuenow="78" aria-valuemin="0" aria-valuemax="100" style="width: 78%;"></div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+
+    </section><!-- /Skills Section -->
+
+    <!-- Experience Section -->
+    <section id="experience" class="experience section">
+
+      <!-- Section Title -->
+      <div class="container section-title" data-aos="fade-up">
+        <h2 data-i18n="experience_title">Experience</h2>
+        <p data-i18n="experience_subtitle">The roles and milestones that shaped how I work today</p>
+      </div><!-- End Section Title -->
+
+      <div class="container">
+
+        <div class="row g-5">
+
+          <div class="col-lg-6" data-aos="fade-up" data-aos-delay="100">
+            <div class="col-head"><i class="bi bi-briefcase"></i>
+              <h3 data-i18n="exp_work_title">Work</h3>
+            </div>
+            <div class="timeline">
+              <div class="item">
+                <span class="year">2021 — Present</span>
+                <h4 data-i18n="exp_job_1_role">Senior Product Designer</h4>
+                <span class="org">Lumen Inc. · Remote</span>
+                <p data-i18n="exp_job_1_desc">Lead designer on the analytics platform, owning everything from research to shipped UI and the design system that supports it.</p>
+              </div>
+              <div class="item">
+                <span class="year">2018 — 2021</span>
+                <h4 data-i18n="exp_job_2_role">Product Designer &amp; Front-End</h4>
+                <span class="org">Northwind Studio · Austin</span>
+                <p data-i18n="exp_job_2_desc">Designed and built marketing sites and web apps for early-stage startups, bridging design and engineering on small teams.</p>
+              </div>
+              <div class="item">
+                <span class="year">2016 — 2018</span>
+                <h4 data-i18n="exp_job_3_role">UI Designer</h4>
+                <span class="org">Atlas Agency · Austin</span>
+                <p data-i18n="exp_job_3_desc">Crafted interfaces and brand systems for agency clients across fintech, health, and consumer products.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-6" data-aos="fade-up" data-aos-delay="200">
+            <div class="col-head"><i class="bi bi-mortarboard"></i>
+              <h3 data-i18n="exp_edu_title">Education &amp; Awards</h3>
+            </div>
+            <div class="timeline">
+              <div class="item">
+                <span class="year">2012 — 2016</span>
+                <h4 data-i18n="exp_edu_1_title">BFA, Communication Design</h4>
+                <span class="org">University of Texas · Austin</span>
+                <p data-i18n="exp_edu_1_desc">Graduated with honors. Focused on typography, interaction design, and the craft of building usable systems.</p>
+              </div>
+              <div class="item">
+                <span class="year">2022</span>
+                <h4 data-i18n="exp_edu_2_title">Awwwards — Site of the Day</h4>
+                <span class="org">Lumen Analytics</span>
+                <p data-i18n="exp_edu_2_desc">Recognized for design excellence and accessibility on a complex data product.</p>
+              </div>
+              <div class="item">
+                <span class="year">2020</span>
+                <h4 data-i18n="exp_edu_3_title">CSS Design Awards — Winner</h4>
+                <span class="org">Marrow Coffee</span>
+                <p data-i18n="exp_edu_3_desc">Honored for a bold, cohesive brand and e-commerce experience.</p>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <div class="text-center mt-5" data-aos="fade-up" data-aos-delay="200">
+          <a href="#contact" class="btn-main"><i class="bi bi-download"></i> <span data-i18n="btn_download_resume">Download Full Resume</span></a>
+        </div>
+
+      </div>
+
+    </section><!-- /Experience Section -->
+
+    <!-- Portfolio Section -->
+    <section id="portfolio" class="portfolio section">
+
+      <!-- Section Title -->
+      <div class="container section-title" data-aos="fade-up">
+        <h2 data-i18n="portfolio_title">Selected Work</h2>
+        <p data-i18n="portfolio_subtitle">A closer look at a few projects and the impact they made</p>
+      </div><!-- End Section Title -->
+
+      <div class="container">
+
+        <div class="cases" id="portfolioCasesContainer">
+
+          <article class="case" data-aos="fade-up" data-aos-delay="100">
+            <div class="row g-4 align-items-center">
+              <div class="col-lg-6"><a href="/portfolio-details" class="shot"><img src="assets/img/portfolio/portfolio-1.webp" alt="Lumen Analytics" class="img-fluid"></a></div>
+              <div class="col-lg-6">
+                <div class="copy"><span class="cat" data-i18n="case_1_cat">Web App · 2024</span>
+                  <h3 data-i18n="case_1_title">Lumen Analytics</h3>
+                  <p data-i18n="case_1_desc">A calmer way to read product metrics. We rebuilt the information architecture and shipped a focused dashboard that cut time-to-insight in half.</p><a href="/portfolio-details" class="more"><span data-i18n="btn_view_case">View case study</span> <i class="bi bi-arrow-right"></i></a>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <article class="case reverse" data-aos="fade-up" data-aos-delay="100">
+            <div class="row g-4 align-items-center">
+              <div class="col-lg-6 order-lg-2"><a href="/portfolio-details" class="shot"><img src="assets/img/portfolio/portfolio-2.webp" alt="Pace Fitness" class="img-fluid"></a></div>
+              <div class="col-lg-6 order-lg-1">
+                <div class="copy"><span class="cat" data-i18n="case_2_cat">Mobile App · 2023</span>
+                  <h3 data-i18n="case_2_title">Pace Fitness</h3>
+                  <p data-i18n="case_2_desc">An iOS coaching app designed around real gestures and motivation. Daily active users doubled within three months of launch.</p><a href="/portfolio-details" class="more"><span data-i18n="btn_view_case">View case study</span> <i class="bi bi-arrow-right"></i></a>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <article class="case" data-aos="fade-up" data-aos-delay="100">
+            <div class="row g-4 align-items-center">
+              <div class="col-lg-6"><a href="/portfolio-details" class="shot"><img src="assets/img/portfolio/portfolio-3.webp" alt="Marrow Coffee" class="img-fluid"></a></div>
+              <div class="col-lg-6">
+                <div class="copy"><span class="cat" data-i18n="case_3_cat">Branding · 2023</span>
+                  <h3 data-i18n="case_3_title">Marrow Coffee</h3>
+                  <p data-i18n="case_3_desc">A full identity system for a specialty roaster — logo, packaging, and a warm visual language that scaled across every touchpoint.</p><a href="/portfolio-details" class="more"><span data-i18n="btn_view_case">View case study</span> <i class="bi bi-arrow-right"></i></a>
+                </div>
+              </div>
+            </div>
+          </article>
+
+        </div>
+
+      </div>
+
+    </section><!-- /Portfolio Section -->
+
+    <!-- Testimonials Section -->
+    <section id="testimonials" class="testimonials section light-background">
+
+      <!-- Section Title -->
+      <div class="container section-title" data-aos="fade-up">
+        <h2 data-i18n="testimonials_title">Kind Words</h2>
+        <p data-i18n="testimonials_subtitle">A few notes from people I've had the joy of working with</p>
+      </div><!-- End Section Title -->
+
+      <div class="container">
+
+        <div class="row g-4">
+
+          <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
+            <figure class="q-card">
+              <div class="rating"><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i></div>
+              <blockquote data-i18n="test_1_quote">Jahongir translated a vague idea into a product our users adore. The detail in both design and code was outstanding.</blockquote>
+              <figcaption><img src="assets/img/person/person-f-3.webp" alt="Elena Ross" class="img-fluid">
+                <div><span class="name">Elena Ross</span><span class="role">Founder, Lumen</span></div>
+              </figcaption>
+            </figure>
+          </div>
+
+          <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
+            <figure class="q-card">
+              <div class="rating"><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i></div>
+              <blockquote data-i18n="test_2_quote">Rare to find someone equally strong in design and engineering. Deadlines met, communication clear, result above expectations.</blockquote>
+              <figcaption><img src="assets/img/person/person-m-5.webp" alt="Marcus Hale" class="img-fluid">
+                <div><span class="name">Marcus Hale</span><span class="role">PM, Northwind</span></div>
+              </figcaption>
+            </figure>
+          </div>
+
+          <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="300">
+            <figure class="q-card">
+              <div class="rating"><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i></div>
+              <blockquote data-i18n="test_3_quote">Our design system was a mess before Jahongir. He brought order and consistency that let the whole team move twice as fast.</blockquote>
+              <figcaption><img src="assets/img/person/person-f-8.webp" alt="Priya Nair" class="img-fluid">
+                <div><span class="name">Priya Nair</span><span class="role">Design Lead, Atlas</span></div>
+              </figcaption>
+            </figure>
+          </div>
+
+        </div>
+
+      </div>
+
+    </section><!-- /Testimonials Section -->
+
+    <!-- Process Section -->
+    <section id="process" class="process section">
+
+      <!-- Section Title -->
+      <div class="container section-title" data-aos="fade-up">
+        <h2 data-i18n="process_title">How I Work</h2>
+        <p data-i18n="process_subtitle">A simple, collaborative process that keeps projects on track</p>
+      </div><!-- End Section Title -->
+
+      <div class="container">
+
+        <div class="row g-4 steps">
+
+          <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="100">
+            <div class="step">
+              <span class="num">01</span>
+              <i class="bi bi-search"></i>
+              <h3 data-i18n="process_step_1_title">Discover</h3>
+              <p data-i18n="process_step_1_desc">We dig into your goals, users, and constraints so we're solving the right problem from day one.</p>
+            </div>
+          </div>
+
+          <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="200">
+            <div class="step">
+              <span class="num">02</span>
+              <i class="bi bi-pencil-square"></i>
+              <h3 data-i18n="process_step_2_title">Design</h3>
+              <p data-i18n="process_step_2_desc">Wireframes evolve into polished, interactive designs — reviewed together at every milestone.</p>
+            </div>
+          </div>
+
+          <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="300">
+            <div class="step">
+              <span class="num">03</span>
+              <i class="bi bi-code-square"></i>
+              <h3 data-i18n="process_step_3_title">Build</h3>
+              <p data-i18n="process_step_3_desc">Designs become accessible, performant front-end code with no fidelity lost in handoff.</p>
+            </div>
+          </div>
+
+          <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="400">
+            <div class="step">
+              <span class="num">04</span>
+              <i class="bi bi-rocket-takeoff"></i>
+              <h3 data-i18n="process_step_4_title">Launch</h3>
+              <p data-i18n="process_step_4_desc">We ship, measure, and refine — with support through release and beyond.</p>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+
+    </section><!-- /Process Section -->
+
+    <!-- CTA Section -->
+    <section id="cta" class="cta section dark-background">
+
+      <div class="container" data-aos="fade-up" data-aos-delay="100">
+
+        <div class="row justify-content-center text-center">
+          <div class="col-lg-8">
+            <h2 data-i18n="cta_title">Ready to bring your idea to life?</h2>
+            <p class="lead" data-i18n="cta_lead">I have room for one new project starting next month. If you're building something thoughtful, I'd love to hear about it.</p>
+            <a href="#contact" class="btn-main"><span data-i18n="cta_btn">Let's Work Together</span> <i class="bi bi-arrow-right"></i></a>
+          </div>
+        </div>
+
+      </div>
+
+    </section><!-- /CTA Section -->
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact section">
+
+      <!-- Section Title -->
+      <div class="container section-title" data-aos="fade-up">
+        <h2 data-i18n="contact_title">Get in Touch</h2>
+        <p data-i18n="contact_subtitle">Tell me about your project and I'll be in touch shortly</p>
+      </div><!-- End Section Title -->
+
+      <div class="container" data-aos="fade-up" data-aos-delay="100">
+
+        <div class="row justify-content-center">
+          <div class="col-lg-8">
+
+            <div class="contact-links text-center mb-5">
+              <a href="mailto:hello@example.com" class="link-item profile-email-text"><i class="bi bi-envelope"></i> hello@example.com</a>
+              <a href="tel:+15552480192" class="link-item profile-phone-text"><i class="bi bi-telephone"></i> +1 (555) 248-0192</a>
+              <span class="link-item profile-location-text"><i class="bi bi-geo-alt"></i> Austin, TX</span>
+            </div>
+
+            <form action="forms/contact.php" method="post" class="php-email-form">
+              <div class="row gy-3">
+                <div class="col-md-6"><input type="text" name="name" class="form-control" placeholder="Your Name" required="" data-i18n-placeholder="contact_name_placeholder"></div>
+                <div class="col-md-6"><input type="email" name="email" class="form-control" placeholder="Your Email" required="" data-i18n-placeholder="contact_email_placeholder"></div>
+                <div class="col-12"><input type="text" name="subject" class="form-control" placeholder="Subject" required="" data-i18n-placeholder="contact_subject_placeholder"></div>
+                <div class="col-12"><textarea name="message" class="form-control" rows="6" placeholder="Your Message" required="" data-i18n-placeholder="contact_message_placeholder"></textarea></div>
+                <div class="col-12 text-center">
+                  <div class="loading" data-i18n="contact_loading">Loading</div>
+                  <div class="error-message"></div>
+                  <div class="sent-message" data-i18n="contact_sent">Your message has been sent. Thank you!</div>
+                  <button type="submit" class="btn-submit" data-i18n="contact_btn_send">Send Message</button>
+                </div>
+              </div>
+            </form>
+
+          </div>
+        </div>
+
+      </div>
+
+    </section><!-- /Contact Section -->
+
+  </main>
+
+  <footer id="footer" class="footer dark-background">
+
+    <div class="container footer-top">
+      <div class="row gy-4">
+
+        <div class="col-lg-4 col-md-12 footer-about">
+          <a href="/" class="logo d-flex align-items-center text-decoration-none mb-3">
+            <img src="assets/img/logo.png" alt="Jahongir Code" class="me-2 rounded-circle" style="width: 44px; height: 44px; object-fit: cover;">
+            <span class="sitename fw-bold" style="font-size: 23px; color: #ffffff;">Jahongir<span style="color: #38bdf8;"> Code</span></span>
+          </a>
+          <p data-i18n="footer_bio">Product designer and front-end developer crafting accessible, human-centered digital experiences. Always happy to talk about a new idea.</p>
+          <div class="social-links d-flex mt-4">
+            <a href="https://t.me" aria-label="Telegram" class="social-telegram" target="_blank"><i class="bi bi-telegram"></i></a>
+            <a href="https://github.com" aria-label="GitHub" class="social-github" target="_blank"><i class="bi bi-github"></i></a>
+            <a href="https://linkedin.com" aria-label="LinkedIn" class="social-linkedin" target="_blank"><i class="bi bi-linkedin"></i></a>
+            <a href="#" aria-label="Twitter" class="social-twitter" target="_blank"><i class="bi bi-twitter-x"></i></a>
+          </div>
+        </div>
+
+        <div class="col-lg-2 col-6 footer-links">
+          <h4 data-i18n="footer_navigate">Navigate</h4>
+          <ul>
+            <li><a href="#hero" data-i18n="nav_home">Home</a></li>
+            <li><a href="#about" data-i18n="nav_about">About</a></li>
+            <li><a href="#services" data-i18n="nav_services">Services</a></li>
+            <li><a href="#portfolio" data-i18n="nav_portfolio">Portfolio</a></li>
+            <li><a href="#contact" data-i18n="nav_contact">Contact</a></li>
+          </ul>
+        </div>
+
+        <div class="col-lg-3 col-6 footer-links">
+          <h4 data-i18n="footer_what_i_do">What I Do</h4>
+          <ul>
+            <li><a href="/service-details" data-i18n="service_1_title">UI / UX Design</a></li>
+            <li><a href="/service-details" data-i18n="service_2_title">Front-End Development</a></li>
+            <li><a href="/service-details" data-i18n="service_3_title">Design Systems</a></li>
+            <li><a href="/service-details" data-i18n="service_4_title">Brand &amp; Identity</a></li>
+            <li><a href="/service-details" data-i18n="service_5_title">Product Strategy</a></li>
+          </ul>
+        </div>
+
+        <div class="col-lg-3 col-md-12 footer-contact">
+          <h4 data-i18n="footer_say_hello">Say Hello</h4>
+          <p class="profile-location-text">1428 Maple Avenue, Austin, TX 78701</p>
+          <p class="mt-3"><strong>Phone:</strong> <span class="profile-phone-text">+1 (555) 248-0192</span></p>
+          <p><strong>Email:</strong> <span class="profile-email-text">hello@example.com</span></p>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="container copyright text-center mt-4">
+      <p>© <span>Copyright</span> <strong class="px-1 sitename">Jahongir Code (jahongircode.uz)</strong> <span>All Rights Reserved</span></p>
+      <div class="credits">
+        Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
+      </div>
+    </div>
+
+  </footer>
+
+  <!-- Scroll Top -->
+  <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+  <!-- Preloader -->
+  <div id="preloader"></div>
+
+  <!-- Vendor JS Files CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@srexi/purecounterjs/dist/purecounter_vanilla.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/waypoints/4.0.1/noframework.waypoints.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+  <!-- i18n & Theme Script -->
+  <script src="assets/js/i18n.js"></script>
+
+  <!-- Main JS File -->
+  <script src="assets/js/main.js"></script>
+
+</body>
+
+</html>

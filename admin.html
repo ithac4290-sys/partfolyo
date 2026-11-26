@@ -1,0 +1,2434 @@
+<!DOCTYPE html>
+<html lang="uz">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <title>Admin Panel - Jahongir Mirzayev Portfolio Management</title>
+  <meta name="description" content="Jahongir Mirzayev - Portfolio va boshqaruv tizimi">
+  <meta name="robots" content="noindex, nofollow">
+
+  <!-- Favicons -->
+  <link href="favicon.ico?v=20261126" rel="shortcut icon" type="image/x-icon">
+  <link href="assets/img/favicon.png?v=20261126" rel="icon" type="image/png">
+  <link href="assets/img/apple-touch-icon.png?v=20261126" rel="apple-touch-icon">
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com" rel="preconnect">
+  <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <!-- Vendor CSS CDN -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+
+  <!-- Main CSS -->
+  <link href="assets/css/main.css" rel="stylesheet">
+
+  <script>
+    (function() {
+      var savedTheme = localStorage.getItem('workfolio_theme') || 'dark';
+      if (savedTheme === 'light') {
+        document.documentElement.classList.add('light-mode');
+      }
+    })();
+  </script>
+
+  <style>
+    :root {
+      --admin-accent: #38bdf8;
+      --admin-accent-glow: rgba(56, 189, 248, 0.25);
+      --admin-success: #10b981;
+      --admin-warning: #f59e0b;
+      --admin-danger: #ef4444;
+      --admin-card-bg: rgba(255, 255, 255, 0.035);
+      --admin-border: rgba(255, 255, 255, 0.12);
+    }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      min-height: 100vh;
+      background-color: #000000 !important;
+      color: #ffffff !important;
+    }
+
+    /* Top Header */
+    .admin-header {
+      background: rgba(0, 0, 0, 0.75);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--admin-border);
+      padding: 12px 0;
+      position: sticky;
+      top: 0;
+      z-index: 1020;
+    }
+    body.light-mode .admin-header {
+      background: rgba(255, 255, 255, 0.9);
+      border-bottom-color: #e2e8f0;
+    }
+
+    .admin-brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+      color: var(--heading-color, #ffffff);
+    }
+    .admin-brand-icon {
+      width: 42px;
+      height: 42px;
+      border-radius: 12px;
+      background: rgba(255, 255, 255, 0.09);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid rgba(255, 255, 255, 0.25);
+      color: #ffffff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 800;
+      font-size: 20px;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.25);
+    }
+
+    /* Sidebar Navigation */
+    .admin-sidebar {
+      background: var(--admin-card-bg);
+      border: 1px solid var(--admin-border);
+      border-radius: 16px;
+      padding: 20px 14px;
+      position: sticky;
+      top: 85px;
+      transition: all 0.25s ease;
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+    }
+    body.light-mode .admin-sidebar {
+      background: #ffffff;
+      border-color: #e2e8f0;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
+    }
+
+    .admin-user-card {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 12px;
+      background: rgba(255, 255, 255, 0.04);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.14);
+      border-radius: 12px;
+      margin-bottom: 20px;
+    }
+    .admin-user-avatar {
+      width: 44px;
+      height: 44px;
+      border-radius: 10px;
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 18px;
+    }
+
+    .admin-nav-item {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 12px 16px;
+      border-radius: 10px;
+      color: var(--default-color);
+      font-weight: 500;
+      text-decoration: none;
+      margin-bottom: 6px;
+      transition: all 0.2s ease;
+      cursor: pointer;
+      user-select: none;
+    }
+    .admin-nav-item i {
+      font-size: 18px;
+      transition: transform 0.2s ease;
+    }
+    .admin-nav-item:hover {
+      background: rgba(56, 189, 248, 0.08);
+      color: var(--accent-color);
+    }
+    .admin-nav-item:hover i {
+      transform: scale(1.15);
+    }
+    .admin-nav-item.active {
+      background: linear-gradient(90deg, rgba(56, 189, 248, 0.18), rgba(56, 189, 248, 0.05));
+      color: var(--accent-color);
+      border-left: 3px solid var(--accent-color);
+      font-weight: 600;
+    }
+
+    /* Cards & Containers */
+    .admin-panel-card {
+      background: var(--admin-card-bg);
+      border: 1px solid var(--admin-border);
+      border-radius: 18px;
+      padding: 26px;
+      margin-bottom: 24px;
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      transition: box-shadow 0.25s ease, border-color 0.25s ease;
+    }
+    body.light-mode .admin-panel-card {
+      background: #ffffff;
+      border-color: #e2e8f0;
+      box-shadow: 0 4px 18px rgba(0, 0, 0, 0.03);
+    }
+    .admin-panel-card:hover {
+      border-color: rgba(255, 255, 255, 0.35);
+    }
+
+    .admin-stat-card {
+      background: var(--admin-card-bg);
+      border: 1px solid var(--admin-border);
+      border-radius: 16px;
+      padding: 22px;
+      position: relative;
+      overflow: hidden;
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+    }
+    body.light-mode .admin-stat-card {
+      background: #ffffff;
+      border-color: #e2e8f0;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.03);
+    }
+    .admin-stat-card:hover {
+      transform: translateY(-4px);
+      border-color: rgba(255, 255, 255, 0.4);
+      box-shadow: 0 10px 24px rgba(0, 0, 0, 0.4);
+    }
+    .admin-stat-icon {
+      width: 48px;
+      height: 48px;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 22px;
+      margin-bottom: 14px;
+    }
+
+    /* Tables */
+    .table-dark-custom {
+      color: #ffffff;
+      margin-bottom: 0;
+    }
+    .table-dark-custom th {
+      color: #ffffff;
+      font-weight: 600;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.16);
+      padding: 12px 14px;
+      font-size: 13px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    .table-dark-custom td {
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      padding: 14px;
+      vertical-align: middle;
+      font-size: 14px;
+      color: rgba(255, 255, 255, 0.9);
+    }
+    body.light-mode .table-dark-custom th {
+      border-bottom-color: #e2e8f0;
+      color: #0f172a;
+    }
+    body.light-mode .table-dark-custom td {
+      border-bottom-color: #f1f5f9;
+      color: #334155;
+    }
+
+    /* Inputs */
+    .form-control, .form-select {
+      background-color: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      color: #ffffff;
+      border-radius: 10px;
+      padding: 10px 14px;
+      font-size: 14px;
+      transition: all 0.2s ease;
+    }
+    .form-control:focus, .form-select:focus {
+      background-color: rgba(255, 255, 255, 0.09);
+      border-color: rgba(255, 255, 255, 0.6);
+      color: #ffffff;
+      box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.15);
+    }
+    body.light-mode .form-control, body.light-mode .form-select {
+      background-color: #ffffff;
+      border-color: #cbd5e1;
+      color: #0f172a;
+    }
+    body.light-mode .form-control:focus, body.light-mode .form-select:focus {
+      border-color: #0284c7;
+      box-shadow: 0 0 0 3px rgba(2, 132, 199, 0.15);
+    }
+
+    /* Buttons */
+    .btn-main {
+      background: rgba(255, 255, 255, 0.08) !important;
+      backdrop-filter: blur(14px) !important;
+      -webkit-backdrop-filter: blur(14px) !important;
+      color: #ffffff !important;
+      border: 1px solid rgba(255, 255, 255, 0.25) !important;
+      font-weight: 600;
+      border-radius: 10px;
+      padding: 9px 18px;
+      transition: all 0.25s ease;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.2) !important;
+    }
+    .btn-main:hover {
+      background: rgba(255, 255, 255, 0.2) !important;
+      border-color: rgba(255, 255, 255, 0.6) !important;
+      color: #ffffff !important;
+      transform: translateY(-1px);
+      box-shadow: 0 8px 24px rgba(255, 255, 255, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.4) !important;
+    }
+
+    /* Modals */
+    .modal-content {
+      background: rgba(10, 10, 10, 0.9) !important;
+      backdrop-filter: blur(25px) !important;
+      -webkit-backdrop-filter: blur(25px) !important;
+      border: 1px solid rgba(255, 255, 255, 0.18) !important;
+      border-radius: 20px;
+      color: #ffffff !important;
+      box-shadow: 0 25px 60px rgba(0, 0, 0, 0.85);
+    }
+    body.light-mode .modal-content {
+      background: #ffffff;
+      border-color: #e2e8f0;
+      color: #334155;
+      box-shadow: 0 20px 45px rgba(0, 0, 0, 0.1);
+    }
+
+    /* Floating Toast Alerts */
+    .admin-toast-container {
+      position: fixed;
+      top: 85px;
+      right: 24px;
+      z-index: 1090;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      pointer-events: none;
+    }
+    .admin-toast {
+      min-width: 300px;
+      max-width: 380px;
+      background: rgba(12, 12, 12, 0.88) !important;
+      backdrop-filter: blur(20px) !important;
+      -webkit-backdrop-filter: blur(20px) !important;
+      border: 1px solid rgba(255, 255, 255, 0.18) !important;
+      border-radius: 12px;
+      padding: 14px 18px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      color: #ffffff !important;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
+      pointer-events: auto;
+      animation: slideInRight 0.3s ease forwards;
+      transition: all 0.3s ease;
+    }
+    body.light-mode .admin-toast {
+      background: #ffffff;
+      border-color: #e2e8f0;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+      color: #0f172a;
+    }
+    @keyframes slideInRight {
+      from { transform: translateX(100%); opacity: 0; }
+      to { transform: translateX(0); opacity: 1; }
+    }
+
+    /* Login Overlay */
+    .login-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.94);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      z-index: 9999;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+    body.light-mode .login-overlay {
+      background: rgba(248, 250, 252, 0.95);
+    }
+    .login-card {
+      width: 100%;
+      max-width: 420px;
+      background: var(--admin-card-bg);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 24px;
+      padding: 38px;
+      box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5);
+    }
+    body.light-mode .login-card {
+      background: #ffffff;
+      border-color: #e2e8f0;
+      box-shadow: 0 20px 45px rgba(0, 0, 0, 0.08);
+    }
+
+    /* Mobile scroll for tabs */
+    @media (max-width: 991.98px) {
+      .admin-sidebar {
+        position: static;
+        margin-bottom: 20px;
+        padding: 14px;
+      }
+      .admin-sidebar .nav {
+        flex-direction: row !important;
+        overflow-x: auto;
+        white-space: nowrap;
+        gap: 8px;
+        padding-bottom: 6px;
+      }
+      .admin-nav-item {
+        margin-bottom: 0;
+        padding: 8px 14px;
+        font-size: 13px;
+      }
+      .admin-user-card {
+        display: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- ==========================================================================
+       LOGIN OVERLAY (Agar autentifikatsiyadan o'tilmagan bo'lsa)
+       ========================================================================== -->
+  <div id="adminLoginOverlay" class="login-overlay d-none">
+    <div class="login-card text-center">
+      <img src="assets/img/logo.png" alt="Jahongir Code" class="rounded-circle mb-3" style="width: 72px; height: 72px; object-fit: cover; box-shadow: 0 8px 25px rgba(56, 189, 248, 0.35);">
+      <h3 class="fw-bold mb-1" style="color: var(--heading-color);">Admin Boshqaruv</h3>
+      <p class="small text-muted mb-4">Jahongir Mirzayev portfolio tizimiga kirish</p>
+
+      <div id="loginAlert" class="alert alert-danger py-2 d-none" role="alert">
+        <i class="bi bi-exclamation-triangle-fill me-1"></i> <span id="loginAlertText">Email yoki parol noto'g'ri!</span>
+      </div>
+
+      <form id="adminLoginForm">
+        <!-- Email Input -->
+        <div class="mb-3 text-start">
+          <label for="adminEmailInput" class="form-label small fw-semibold" style="color: var(--heading-color);">Admin Email</label>
+          <div class="input-group">
+            <span class="input-group-text bg-transparent border-secondary text-muted"><i class="bi bi-envelope-at-fill"></i></span>
+            <input type="email" class="form-control" id="adminEmailInput" placeholder="ithac4290@gmail.com" required autofocus autocomplete="username">
+          </div>
+        </div>
+
+        <!-- Password Input -->
+        <div class="mb-3 text-start">
+          <label for="adminPassInput" class="form-label small fw-semibold" style="color: var(--heading-color);">Maxfiy Parol</label>
+          <div class="input-group">
+            <span class="input-group-text bg-transparent border-secondary text-muted"><i class="bi bi-shield-lock-fill"></i></span>
+            <input type="password" class="form-control" id="adminPassInput" placeholder="Parolingizni kiriting..." required autocomplete="current-password">
+            <button class="btn btn-outline-secondary border-secondary" type="button" id="togglePasswordBtn" title="Ko'rsatish/Yashirish"><i class="bi bi-eye"></i></button>
+          </div>
+          <div class="d-flex justify-content-between align-items-center mt-2">
+            <div class="form-check small text-muted">
+              <input class="form-check-input" type="checkbox" id="rememberMeCheck" checked>
+              <label class="form-check-label" for="rememberMeCheck">Meni eslab qolish</label>
+            </div>
+          </div>
+        </div>
+
+        <button type="submit" class="btn btn-main w-100 py-2">
+          <i class="bi bi-box-arrow-in-right me-1"></i> Tizimga Kirish
+        </button>
+      </form>
+      
+      <div class="mt-4 pt-3 border-top border-secondary-subtle">
+        <a href="/" class="small text-decoration-none">
+          <i class="bi bi-arrow-left me-1"></i> Bosh sahifaga qaytish
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==========================================================================
+       TOP ADMIN HEADER
+       ========================================================================== -->
+  <header class="admin-header">
+    <div class="container-fluid px-4 d-flex align-items-center justify-content-between">
+      
+      <!-- Brand Logo -->
+      <a href="/admin" class="admin-brand">
+        <img src="assets/img/logo.png" alt="Jahongir Code" class="admin-brand-icon rounded-circle" style="width: 42px; height: 42px; object-fit: cover;">
+        <div>
+          <h1 class="h5 fw-bold mb-0" style="color: var(--heading-color); line-height: 1.2;">
+            Jahongir Code <span class="badge bg-primary-subtle text-primary border border-primary-subtle fs-6 ms-1">Admin v2.5</span>
+          </h1>
+          <span class="small text-muted font-monospace" style="font-size: 11px;">🟢 Tizim faol &middot; Portfolio boshqaruvi</span>
+        </div>
+      </a>
+
+      <!-- Header Action Controls -->
+      <div class="d-flex align-items-center gap-2">
+        <!-- Language Switcher -->
+        <div class="dropdown lang-dropdown">
+          <a class="dropdown-toggle btn btn-sm btn-outline-secondary rounded-pill px-3" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" id="current-lang-label">
+            Uz
+          </a>
+          <ul class="dropdown-menu dropdown-menu-end shadow-sm border-secondary-subtle">
+            <li><a class="dropdown-item lang-select-item active" href="#" data-lang="uz">O'zbekcha</a></li>
+            <li><a class="dropdown-item lang-select-item" href="#" data-lang="en">English</a></li>
+            <li><a class="dropdown-item lang-select-item" href="#" data-lang="ru">Русский</a></li>
+          </ul>
+        </div>
+
+        <!-- Day / Night Theme Button -->
+        <button class="btn btn-sm btn-outline-secondary rounded-circle theme-toggle-btn" id="theme-toggle-btn" title="Tungi / Kunduzgi rejim" style="width: 36px; height: 36px; display: inline-flex; align-items: center; justify-content: center;">
+          <i class="bi bi-sun-fill"></i>
+        </button>
+
+        <!-- Live Site Link -->
+        <a href="/" class="btn btn-sm btn-outline-info rounded-pill px-3 d-none d-sm-inline-flex align-items-center gap-1" target="_blank" title="Bosh sahifani yangi tabda ko'rish">
+          <i class="bi bi-box-arrow-up-right"></i> <span>Saytni ko'rish</span>
+        </a>
+
+        <!-- Logout Button -->
+        <button id="adminLogoutBtn" class="btn btn-sm btn-outline-danger rounded-pill px-3 d-inline-flex align-items-center gap-1">
+          <i class="bi bi-box-arrow-right"></i> <span>Chiqish</span>
+        </button>
+      </div>
+
+    </div>
+  </header>
+
+  <!-- ==========================================================================
+       MAIN CONTENT CONTAINER
+       ========================================================================== -->
+  <div class="container-fluid px-4 py-4">
+    <div class="row g-4">
+      
+      <!-- ================= SIDEBAR ================= -->
+      <div class="col-lg-3 col-xl-2">
+        <aside class="admin-sidebar">
+          
+          <!-- User info preview in sidebar -->
+          <div class="admin-user-card">
+            <img src="assets/img/logo.png" alt="Jahongir Code" class="admin-user-avatar rounded-circle" style="object-fit: cover;">
+            <div class="overflow-hidden">
+              <h6 class="mb-0 fw-bold text-truncate" id="sidebarUserName" style="color: var(--heading-color);">Jahongir Code</h6>
+              <span class="small text-muted font-monospace" style="font-size: 11px;">jahongircode.uz</span>
+            </div>
+          </div>
+
+          <!-- Nav Items -->
+          <div class="nav flex-column" id="adminTabsNav">
+            <a class="admin-nav-item active" data-tab="tab-overview">
+              <i class="bi bi-grid-fill"></i> <span>Umumiy Ko'rinish</span>
+            </a>
+            <a class="admin-nav-item" data-tab="tab-profile">
+              <i class="bi bi-person-badge-fill"></i> <span>Profil Sozlamalari</span>
+            </a>
+            <a class="admin-nav-item" data-tab="tab-projects">
+              <i class="bi bi-collection-fill"></i> <span>Loyihalar</span>
+              <span id="sidebarProjectsBadge" class="badge rounded-pill bg-info-subtle text-info ms-auto">6</span>
+            </a>
+            <a class="admin-nav-item" data-tab="tab-services">
+              <i class="bi bi-briefcase-fill"></i> <span>Xizmatlar</span>
+              <span id="sidebarServicesBadge" class="badge rounded-pill bg-primary-subtle text-primary ms-auto">5</span>
+            </a>
+            <a class="admin-nav-item" data-tab="tab-messages">
+              <i class="bi bi-envelope-paper-fill"></i> <span>Xabarlar</span>
+              <span id="unreadBadge" class="badge rounded-pill bg-danger ms-auto">0</span>
+            </a>
+            <a class="admin-nav-item" data-tab="tab-settings">
+              <i class="bi bi-sliders2-vertical"></i> <span>Tizim & Telegram</span>
+            </a>
+          </div>
+
+          <div class="mt-4 pt-3 border-top border-secondary-subtle small text-muted d-none d-lg-block">
+            <div class="d-flex align-items-center justify-content-between mb-1 font-monospace" style="font-size: 11px;">
+              <span>Server:</span>
+              <span class="text-success">● Ishlamoqda</span>
+            </div>
+            <div class="d-flex align-items-center justify-content-between font-monospace" style="font-size: 11px;">
+              <span>Port:</span>
+              <span>3000 (Local)</span>
+            </div>
+          </div>
+
+        </aside>
+      </div>
+
+      <!-- ================= MAIN BODY PANE ================= -->
+      <div class="col-lg-9 col-xl-10">
+
+        <!-- ================= TAB 1: OVERVIEW ================= -->
+        <div id="tab-overview" class="admin-tab-pane">
+          
+          <div class="d-flex align-items-center justify-content-between mb-4 flex-wrap gap-2">
+            <div>
+              <h2 class="h3 fw-bold mb-1" style="color: var(--heading-color);">Xush kelibsiz, <span id="overviewHelloName">Jahongir</span>! 👋</h2>
+              <p class="text-muted mb-0">Portfolio veb-saytingiz statistikasi, faol loyihalar va so'nggi xabarlar.</p>
+            </div>
+            <div class="d-flex align-items-center gap-2 flex-wrap">
+              <button class="btn btn-outline-info btn-sm" onclick="addMockMessage()">
+                <i class="bi bi-send-plus me-1"></i> Sinov xabari yaratish
+              </button>
+              <button class="btn btn-main btn-sm" onclick="openAddProjectModal()">
+                <i class="bi bi-plus-circle me-1"></i> Yangi loyiha qo'shish
+              </button>
+            </div>
+          </div>
+
+          <!-- 4 Stat Cards -->
+          <div class="row g-3 mb-4">
+            <div class="col-sm-6 col-xl-3">
+              <div class="admin-stat-card">
+                <div class="admin-stat-icon" style="background: rgba(56, 189, 248, 0.12); color: #38bdf8;">
+                  <i class="bi bi-eye-fill"></i>
+                </div>
+                <h4 id="statVisitsCount" class="h2 fw-bold mb-1" style="color: var(--heading-color);">142</h4>
+                <p class="text-muted small mb-0">Saytga tashriflar soni</p>
+              </div>
+            </div>
+
+            <div class="col-sm-6 col-xl-3">
+              <div class="admin-stat-card">
+                <div class="admin-stat-icon" style="background: rgba(16, 185, 129, 0.12); color: #10b981;">
+                  <i class="bi bi-briefcase-fill"></i>
+                </div>
+                <h4 id="statProjectsCount" class="h2 fw-bold mb-1" style="color: var(--heading-color);">6</h4>
+                <p class="text-muted small mb-0">Faol loyihalar soni</p>
+              </div>
+            </div>
+
+            <div class="col-sm-6 col-xl-3">
+              <div class="admin-stat-card">
+                <div class="admin-stat-icon" style="background: rgba(245, 158, 11, 0.12); color: #f59e0b;">
+                  <i class="bi bi-envelope-fill"></i>
+                </div>
+                <h4 id="statMessagesCount" class="h2 fw-bold mb-1" style="color: var(--heading-color);">0</h4>
+                <p class="text-muted small mb-0">Kelib tushgan xabarlar</p>
+              </div>
+            </div>
+
+            <div class="col-sm-6 col-xl-3">
+              <div class="admin-stat-card">
+                <div class="admin-stat-icon" style="background: rgba(139, 92, 246, 0.12); color: #8b5cf6;">
+                  <i class="bi bi-check2-circle"></i>
+                </div>
+                <h4 class="h2 fw-bold mb-1" style="color: var(--heading-color);">100%</h4>
+                <p class="text-muted small mb-0">Tizim holati (Barqaror)</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Quick Action Buttons Bar -->
+          <div class="admin-panel-card p-3 mb-4">
+            <div class="d-flex align-items-center justify-content-between flex-wrap gap-2">
+              <div class="d-flex align-items-center gap-2">
+                <span class="small fw-semibold text-muted text-uppercase" style="letter-spacing: 0.5px;">Tezkor Amallar:</span>
+              </div>
+              <div class="d-flex align-items-center gap-2 flex-wrap">
+                <button class="btn btn-sm btn-outline-secondary" onclick="switchAdminTab('tab-profile')">
+                  <i class="bi bi-pencil me-1"></i> Profilni tahrirlash
+                </button>
+                <button class="btn btn-sm btn-outline-secondary" onclick="switchAdminTab('tab-projects')">
+                  <i class="bi bi-folder2-open me-1"></i> Barcha loyihalar
+                </button>
+                <button class="btn btn-sm btn-outline-secondary" onclick="exportDataBackup()">
+                  <i class="bi bi-download me-1"></i> Zaxira olish (JSON)
+                </button>
+                <a href="/" target="_blank" class="btn btn-sm btn-outline-info">
+                  <i class="bi bi-box-arrow-up-right me-1"></i> Saytda ko'rish
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Recent Inquiries Box -->
+          <div class="admin-panel-card">
+            <div class="d-flex align-items-center justify-content-between mb-3">
+              <h4 class="h5 fw-bold mb-0" style="color: var(--heading-color);">So'nggi kelgan xabarlar</h4>
+              <button class="btn btn-sm btn-link text-decoration-none" onclick="switchAdminTab('tab-messages')">
+                Barchasini ko'rish →
+              </button>
+            </div>
+            
+            <div class="table-responsive">
+              <table class="table table-dark-custom table-hover">
+                <thead>
+                  <tr>
+                    <th>Yuboruvchi</th>
+                    <th>Email</th>
+                    <th>Mavzu</th>
+                    <th>Vaqt</th>
+                    <th>Holat</th>
+                    <th>Amal</th>
+                  </tr>
+                </thead>
+                <tbody id="overviewMessagesTable">
+                  <!-- Dynamically rendered -->
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- ================= TAB 2: PROFILE SETTINGS ================= -->
+        <div id="tab-profile" class="admin-tab-pane d-none">
+          <div class="admin-panel-card">
+            <div class="d-flex align-items-center justify-content-between mb-3 flex-wrap gap-2">
+              <div>
+                <h3 class="h4 fw-bold mb-1" style="color: var(--heading-color);">Dasturchi Profili & Asosiy Ma'lumotlar</h3>
+                <p class="text-muted small mb-0">Ushbu maydonlardagi ma'lumotlar darhol bosh sahifada (Hero, About, Footer) aks etadi.</p>
+              </div>
+              <button type="button" class="btn btn-sm btn-outline-secondary" onclick="loadDefaultProfileValues()">
+                <i class="bi bi-arrow-counterclockwise me-1"></i> Standart qiymatlarni tiklash
+              </button>
+            </div>
+
+            <form id="profileForm">
+              <div class="row g-3">
+                <div class="col-md-6">
+                  <label class="form-label small fw-semibold" style="color: var(--heading-color);">To'liq Ismingiz</label>
+                  <input type="text" id="profName" class="form-control" value="Jahongir Mirzayev" required>
+                </div>
+
+                <div class="col-md-6">
+                  <label class="form-label small fw-semibold" style="color: var(--heading-color);">Mutaxassislik / Kasb</label>
+                  <input type="text" id="profRole" class="form-control" value="Full-Stack Dasturchi & Dasturiy Muhandis" required>
+                </div>
+
+                <div class="col-12">
+                  <label class="form-label small fw-semibold" style="color: var(--heading-color);">Status (Nishon matni)</label>
+                  <input type="text" id="profStatus" class="form-control" value="🟢 Yangi loyihalar uchun ochiq" required>
+                </div>
+
+                <div class="col-12">
+                  <label class="form-label small fw-semibold" style="color: var(--heading-color);">Bosh sahifadagi qisqa tavsif (Hero Lead)</label>
+                  <textarea id="profLead" class="form-control" rows="3" required>Zamonaviy veb-saytlar, Telegram botlar, Mini Applar va mobil ilovalar yaratish bo'yicha professional Full-Stack dasturchi. Yuqori sifat, tezkorlik va toza arxitektura kafolati.</textarea>
+                </div>
+
+                <div class="col-md-4">
+                  <label class="form-label small fw-semibold" style="color: var(--heading-color);">Elektron pochta</label>
+                  <input type="email" id="profEmail" class="form-control" value="jahongir.mirzayev@gmail.com" required>
+                </div>
+
+                <div class="col-md-4">
+                  <label class="form-label small fw-semibold" style="color: var(--heading-color);">Telefon raqam</label>
+                  <input type="text" id="profPhone" class="form-control" value="+998 90 123 45 67" required>
+                </div>
+
+                <div class="col-md-4">
+                  <label class="form-label small fw-semibold" style="color: var(--heading-color);">Manzil / Shahar</label>
+                  <input type="text" id="profLocation" class="form-control" value="Toshkent, O'zbekiston" required>
+                </div>
+
+                <div class="col-md-4">
+                  <label class="form-label small fw-semibold" style="color: var(--heading-color);">Telegram profil / havola</label>
+                  <div class="input-group">
+                    <span class="input-group-text bg-transparent border-secondary text-muted"><i class="bi bi-telegram"></i></span>
+                    <input type="text" id="profTelegram" class="form-control" value="https://t.me/mirzayevjahongir">
+                  </div>
+                </div>
+
+                <div class="col-md-4">
+                  <label class="form-label small fw-semibold" style="color: var(--heading-color);">GitHub profil havola</label>
+                  <div class="input-group">
+                    <span class="input-group-text bg-transparent border-secondary text-muted"><i class="bi bi-github"></i></span>
+                    <input type="text" id="profGithub" class="form-control" value="https://github.com/mirzayevjahongir">
+                  </div>
+                </div>
+
+                <div class="col-md-4">
+                  <label class="form-label small fw-semibold" style="color: var(--heading-color);">LinkedIn profil havola</label>
+                  <div class="input-group">
+                    <span class="input-group-text bg-transparent border-secondary text-muted"><i class="bi bi-linkedin"></i></span>
+                    <input type="text" id="profLinkedin" class="form-control" value="https://linkedin.com/in/mirzayevjahongir">
+                  </div>
+                </div>
+
+                <div class="col-12 mt-4">
+                  <button type="submit" class="btn btn-main px-4">
+                    <i class="bi bi-check2-circle me-1"></i> O'zgarishlarni Saqlash
+                  </button>
+                  <a href="/" target="_blank" class="btn btn-outline-info ms-2">
+                    <i class="bi bi-eye me-1"></i> Saytda tekshirish
+                  </a>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+
+        <!-- ================= TAB 3: PROJECTS ================= -->
+        <div id="tab-projects" class="admin-tab-pane d-none">
+          <div class="admin-panel-card">
+            <div class="d-flex align-items-center justify-content-between mb-4 flex-wrap gap-2">
+              <div>
+                <h3 class="h4 fw-bold mb-1" style="color: var(--heading-color);">Portfolio Loyihalari Boshqaruvi</h3>
+                <p class="text-muted small mb-0">Mavjud loyihalarni tahrirlash, o'chirish yoki yangi SVG/WebP loyiha qo'shish.</p>
+              </div>
+              <button class="btn btn-main btn-sm" onclick="openAddProjectModal()">
+                <i class="bi bi-plus-lg me-1"></i> Yangi Loyiha Qo'shish
+              </button>
+            </div>
+
+            <!-- Search and Filter Bar -->
+            <div class="row g-2 mb-3 align-items-center">
+              <div class="col-md-5">
+                <div class="input-group input-group-sm">
+                  <span class="input-group-text bg-transparent border-secondary text-muted"><i class="bi bi-search"></i></span>
+                  <input type="text" id="projectSearchInput" class="form-control" placeholder="Loyiha nomi, kategoriya yoki tavsif bo'yicha qidirish...">
+                </div>
+              </div>
+              <div class="col-md-7 text-md-end">
+                <button class="btn btn-sm btn-outline-secondary" onclick="restoreDefaultProjects()">
+                  <i class="bi bi-arrow-repeat me-1"></i> 6 ta standart loyihani qayta yuklash
+                </button>
+              </div>
+            </div>
+
+            <!-- Projects Table -->
+            <div class="table-responsive">
+              <table class="table table-dark-custom table-hover">
+                <thead>
+                  <tr>
+                    <th style="width: 70px;">Rasm</th>
+                    <th>Nomi</th>
+                    <th>Kategoriya</th>
+                    <th>Yil</th>
+                    <th>Tavsif</th>
+                    <th style="width: 140px;">Amallar</th>
+                  </tr>
+                </thead>
+                <tbody id="projectsTableBody">
+                  <!-- Dynamically rendered -->
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <!-- ================= TAB 4: SERVICES ================= -->
+        <div id="tab-services" class="admin-tab-pane d-none">
+          <div class="admin-panel-card">
+            <div class="d-flex align-items-center justify-content-between mb-4 flex-wrap gap-2">
+              <div>
+                <h3 class="h4 fw-bold mb-1" style="color: var(--heading-color);">Ko'rsatiladigan Xizmatlar (Services)</h3>
+                <p class="text-muted small mb-0">Bosh sahifadagi "What I Do" bo'limida aks etuvchi xizmatlar ro'yxati.</p>
+              </div>
+              <button class="btn btn-main btn-sm" onclick="openAddServiceModal()">
+                <i class="bi bi-plus-lg me-1"></i> Yangi Xizmat Qo'shish
+              </button>
+            </div>
+
+            <div class="table-responsive">
+              <table class="table table-dark-custom table-hover">
+                <thead>
+                  <tr>
+                    <th style="width: 60px;">#</th>
+                    <th>Xizmat Nomi</th>
+                    <th>Tavsif</th>
+                    <th>Havola</th>
+                    <th style="width: 120px;">Amallar</th>
+                  </tr>
+                </thead>
+                <tbody id="servicesTableBody">
+                  <!-- Dynamically rendered -->
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <!-- ================= TAB 5: MESSAGES ================= -->
+        <div id="tab-messages" class="admin-tab-pane d-none">
+          <div class="admin-panel-card">
+            <div class="d-flex align-items-center justify-content-between mb-3 flex-wrap gap-2">
+              <div>
+                <h3 class="h4 fw-bold mb-1" style="color: var(--heading-color);">Kelib Tushgan Xabarlar (Inbox)</h3>
+                <p class="text-muted small mb-0">Saytdagi aloqa formasi orqali yuborilgan barcha xabarlar.</p>
+              </div>
+              <div class="d-flex align-items-center gap-2 flex-wrap">
+                <button class="btn btn-sm btn-outline-info" onclick="addMockMessage()">
+                  <i class="bi bi-send-plus me-1"></i> Sinov xabari yaratish
+                </button>
+                <button class="btn btn-sm btn-outline-success" onclick="markAllMessagesRead()">
+                  <i class="bi bi-check2-all me-1"></i> Barchasini o'qilgan qilish
+                </button>
+                <button class="btn btn-sm btn-outline-danger" onclick="clearAllMessages()">
+                  <i class="bi bi-trash me-1"></i> Barchasini tozalash
+                </button>
+              </div>
+            </div>
+
+            <!-- Filters and Search -->
+            <div class="row g-2 mb-3 align-items-center">
+              <div class="col-md-5">
+                <div class="btn-group btn-group-sm" role="group">
+                  <button class="btn btn-outline-secondary active msg-filter-btn" data-filter="all" onclick="filterMessages('all')">Barchasi</button>
+                  <button class="btn btn-outline-secondary msg-filter-btn" data-filter="unread" onclick="filterMessages('unread')">Faqat Yangilar</button>
+                  <button class="btn btn-outline-secondary msg-filter-btn" data-filter="read" onclick="filterMessages('read')">O'qilganlar</button>
+                </div>
+              </div>
+              <div class="col-md-7">
+                <div class="input-group input-group-sm">
+                  <span class="input-group-text bg-transparent border-secondary text-muted"><i class="bi bi-search"></i></span>
+                  <input type="text" id="messageSearchInput" class="form-control" placeholder="Yuboruvchi, email yoki mavzu bo'yicha qidirish...">
+                </div>
+              </div>
+            </div>
+
+            <!-- Messages Table -->
+            <div class="table-responsive">
+              <table class="table table-dark-custom table-hover">
+                <thead>
+                  <tr>
+                    <th>Yuboruvchi</th>
+                    <th>Email</th>
+                    <th>Mavzu</th>
+                    <th>Xabar Matni</th>
+                    <th>Vaqt</th>
+                    <th style="width: 140px;">Amallar</th>
+                  </tr>
+                </thead>
+                <tbody id="messagesTableBody">
+                  <!-- Dynamically rendered -->
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <!-- ================= TAB 6: SETTINGS & TELEGRAM ================= -->
+        <div id="tab-settings" class="admin-tab-pane d-none">
+          <div class="admin-panel-card">
+            <h3 class="h4 fw-bold mb-3" style="color: var(--heading-color);">Tizim & Telegram Bot Sozlamalari</h3>
+            
+            <div class="row g-4">
+              
+              <!-- Telegram Bot Integration -->
+              <div class="col-12">
+                <div class="p-4 rounded-3 border border-info border-opacity-25" style="background: rgba(56, 189, 248, 0.04);">
+                  <div class="d-flex align-items-center justify-content-between mb-3 flex-wrap gap-2">
+                    <h5 class="h6 fw-bold mb-0 text-info">
+                      <i class="bi bi-telegram me-2 fs-5"></i> Telegram Bot Xabarnoma Integratsiyasi
+                    </h5>
+                    <span class="badge bg-info-subtle text-info border border-info-subtle">Tezkor Bog'lanish</span>
+                  </div>
+                  <p class="small text-muted mb-3">
+                    Bosh sahifadagi aloqa shaklidan (Contact Form) xabar yuborilganda, to'g'ridan-to'g'ri shaxsiy Telegram botingizga bildirishnoma kelishini sozlang.
+                  </p>
+
+                  <form id="telegramConfigForm">
+                    <div class="row g-3">
+                      <div class="col-md-6">
+                        <label class="form-label small fw-semibold" style="color: var(--heading-color);">Telegram Bot Token</label>
+                        <input type="text" id="tgBotToken" class="form-control font-monospace" placeholder="Masalan: 123456789:ABCdefGHIjklMNO...">
+                        <div class="form-text small text-muted">Telegramdagi <code>@BotFather</code> orqali olingan token.</div>
+                      </div>
+
+                      <div class="col-md-6">
+                        <label class="form-label small fw-semibold" style="color: var(--heading-color);">Telegram Chat ID</label>
+                        <input type="text" id="tgChatId" class="form-control font-monospace" placeholder="Masalan: 123456789">
+                        <div class="form-text small text-muted">Botingizga xabar kelishi kerak bo'lgan shaxsiy yoki guruh Chat ID raqami.</div>
+                      </div>
+
+                      <div class="col-12">
+                        <div class="form-check form-switch">
+                          <input class="form-check-input" type="checkbox" id="tgNotifyEnabled">
+                          <label class="form-check-label small fw-semibold" for="tgNotifyEnabled" style="color: var(--heading-color);">
+                            Yangi xabarlarni Telegram botga avtomatik jo'natish
+                          </label>
+                        </div>
+                      </div>
+
+                      <div class="col-12 d-flex align-items-center gap-2 flex-wrap">
+                        <button type="submit" class="btn btn-sm btn-main">
+                          <i class="bi bi-save me-1"></i> Telegram Sozlamalarini Saqlash
+                        </button>
+                        <button type="button" class="btn btn-sm btn-outline-info" onclick="testTelegramNotification()">
+                          <i class="bi bi-send-check me-1"></i> Test Xabarini Jo'natish
+                        </button>
+                      </div>
+                    </div>
+                  </form>
+                </div>
+              </div>
+
+              <!-- Stats Counter Settings -->
+              <div class="col-12">
+                <div class="p-3 rounded-3 border border-secondary-subtle">
+                  <h5 class="h6 fw-bold mb-2" style="color: var(--heading-color);">
+                    <i class="bi bi-speedometer me-1 text-info"></i> Bosh Sahifadagi Statistika Hisoblagichlari
+                  </h5>
+                  <p class="small text-muted mb-3">Bu raqamlar bosh sahifaning "About" bo'limidagi hisoblagichlarda aks etadi.</p>
+                  
+                  <form id="statsCountersForm">
+                    <div class="row g-3">
+                      <div class="col-sm-6 col-md-3">
+                        <label class="form-label small" style="color: var(--heading-color);">Yillik Tajriba</label>
+                        <input type="number" id="statYearsInput" class="form-control" value="5" required>
+                      </div>
+                      <div class="col-sm-6 col-md-3">
+                        <label class="form-label small" style="color: var(--heading-color);">Bitirilgan Loyihalar</label>
+                        <input type="number" id="statProjectsInput" class="form-control" value="45" required>
+                      </div>
+                      <div class="col-sm-6 col-md-3">
+                        <label class="form-label small" style="color: var(--heading-color);">Mamnun Mijozlar</label>
+                        <input type="number" id="statClientsInput" class="form-control" value="38" required>
+                      </div>
+                      <div class="col-sm-6 col-md-3">
+                        <label class="form-label small" style="color: var(--heading-color);">Mukofotlar Soni</label>
+                        <input type="number" id="statAwardsInput" class="form-control" value="12" required>
+                      </div>
+                      <div class="col-12">
+                        <button type="submit" class="btn btn-sm btn-main">
+                          <i class="bi bi-save me-1"></i> Statistikalarni Saqlash
+                        </button>
+                      </div>
+                    </div>
+                  </form>
+                </div>
+              </div>
+
+              <!-- Change Admin Password -->
+              <div class="col-md-6">
+                <div class="p-3 rounded-3 border border-secondary-subtle h-100">
+                  <h5 class="h6 fw-bold mb-2" style="color: var(--heading-color);">
+                    <i class="bi bi-key-fill me-1 text-warning"></i> Admin Parolini O'zgartirish
+                  </h5>
+                  <p class="small text-muted mb-3">Admin Email: <code>ithac4290@gmail.com</code> | Parol: <code>jahongir@1212</code></p>
+                  
+                  <form id="changePassForm">
+                    <div class="mb-3">
+                      <label class="form-label small" style="color: var(--heading-color);">Yangi parol</label>
+                      <input type="password" id="newAdminPass" class="form-control" placeholder="Yangi parol kiriting..." required>
+                    </div>
+                    <button type="submit" class="btn btn-sm btn-main">
+                      <i class="bi bi-shield-check me-1"></i> Parolni Yangilash
+                    </button>
+                  </form>
+                </div>
+              </div>
+
+              <!-- Backup & Restore -->
+              <div class="col-md-6">
+                <div class="p-3 rounded-3 border border-secondary-subtle h-100">
+                  <h5 class="h6 fw-bold mb-2" style="color: var(--heading-color);">
+                    <i class="bi bi-database-down me-1 text-success"></i> Zaxira Nusxa (Backup & Restore)
+                  </h5>
+                  <p class="small text-muted mb-3">Barcha loyihalar, profil va xabarlarni bitta JSON faylga yuklab oling yoki qayta tiklang.</p>
+                  <div class="d-flex gap-2 flex-wrap mb-2">
+                    <button type="button" class="btn btn-sm btn-outline-info" onclick="exportDataBackup()">
+                      <i class="bi bi-download me-1"></i> Zaxirani yuklab olish (JSON)
+                    </button>
+                    <label class="btn btn-sm btn-outline-secondary mb-0">
+                      <i class="bi bi-upload me-1"></i> Zaxiradan tiklash <input type="file" id="importBackupFile" accept=".json" class="d-none" onchange="importDataBackup(event)">
+                    </label>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Reset to Defaults -->
+              <div class="col-12">
+                <div class="p-3 rounded-3 border border-danger-subtle bg-danger-subtle bg-opacity-10">
+                  <h5 class="h6 fw-bold mb-2 text-danger">
+                    <i class="bi bi-exclamation-triangle-fill me-1"></i> Boshlang'ich Holatga Qaytarish (Reset)
+                  </h5>
+                  <p class="small text-muted mb-3">Barcha o'zgartirishlarni tozalab, tizimni asl standart Jahongir Mirzayev portfolio holatiga keltiradi.</p>
+                  <button class="btn btn-sm btn-outline-danger" onclick="confirmResetSystem()">
+                    <i class="bi bi-arrow-counterclockwise me-1"></i> Standart holatga qaytarish
+                  </button>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- ==========================================================================
+       MODAL 1: ADD / EDIT PROJECT MODAL
+       ========================================================================== -->
+  <div class="modal fade" id="projectModal" tabindex="-1" aria-labelledby="projectModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+      <div class="modal-content">
+        <div class="modal-header border-secondary-subtle">
+          <h5 class="modal-title fw-bold" id="projectModalLabel">Loyiha Qo'shish / Tahrirlash</h5>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <form id="projectModalForm">
+          <div class="modal-body">
+            <input type="hidden" id="modalProjId">
+            
+            <div class="row g-3">
+              <div class="col-md-7">
+                <label class="form-label small fw-semibold" style="color: var(--heading-color);">Loyiha Nomi</label>
+                <input type="text" id="modalProjTitle" class="form-control" placeholder="Masalan: Apex CRM & Analitika" required>
+              </div>
+
+              <div class="col-md-5">
+                <label class="form-label small fw-semibold" style="color: var(--heading-color);">Kategoriya & Yil</label>
+                <input type="text" id="modalProjCategory" class="form-control" placeholder="Masalan: Veb Ilova · 2024" required>
+              </div>
+
+              <div class="col-12">
+                <label class="form-label small fw-semibold" style="color: var(--heading-color);">Qisqa Tavsif</label>
+                <textarea id="modalProjDesc" class="form-control" rows="3" placeholder="Loyiha haqida qisqacha ma'lumot va asosiy vazifasi..." required></textarea>
+              </div>
+
+              <!-- Image Selection & Live Preview -->
+              <div class="col-md-8">
+                <label class="form-label small fw-semibold" style="color: var(--heading-color);">Rasm Manbasi</label>
+                <select id="modalProjImageSelect" class="form-select form-select-sm mb-2" onchange="onPresetImageSelect(this.value)">
+                  <option value="">-- Tayyor SVG & WebP rasmlardan tanlash --</option>
+                  <option value="assets/images/project-crm.svg">Apex CRM Platform (project-crm.svg)</option>
+                  <option value="assets/images/project-ecommerce.svg">Nova Store E-Commerce (project-ecommerce.svg)</option>
+                  <option value="assets/images/project-tma.svg">Telegram Mini App TMA (project-tma.svg)</option>
+                  <option value="assets/images/project-telegram-bot.svg">Telegram AI Bot (project-telegram-bot.svg)</option>
+                  <option value="assets/images/project-mobile-health.svg">HealthTrack Mobile App (project-mobile-health.svg)</option>
+                  <option value="assets/images/project-mobile-fintech.svg">FinWallet Fintech App (project-mobile-fintech.svg)</option>
+                  <option value="assets/img/portfolio/portfolio-1.webp">Portfolio WebP 1 (Lumen Analytics)</option>
+                  <option value="assets/img/portfolio/portfolio-2.webp">Portfolio WebP 2 (Pace Fitness)</option>
+                  <option value="assets/img/portfolio/portfolio-3.webp">Portfolio WebP 3 (Marrow Coffee)</option>
+                </select>
+
+                <div class="mb-2">
+                  <input type="text" id="modalProjImage" class="form-control form-control-sm" placeholder="Rasm URL manzili..." required oninput="updateImagePreview(this.value)">
+                </div>
+
+                <div>
+                  <label class="btn btn-sm btn-outline-secondary w-100 mb-0">
+                    <i class="bi bi-upload me-1"></i> Kompyuterdan rasm yuklash
+                    <input type="file" id="modalProjFileInput" accept="image/*" class="d-none" onchange="handleImageFileUpload(event)">
+                  </label>
+                </div>
+              </div>
+
+              <!-- Live Preview Box -->
+              <div class="col-md-4 text-center">
+                <label class="form-label small fw-semibold" style="color: var(--heading-color);">Rasm Ko'rinishi</label>
+                <div class="p-2 rounded-3 border border-secondary-subtle d-flex align-items-center justify-content-center bg-black bg-opacity-25" style="height: 125px;">
+                  <img id="modalProjPreviewImg" src="assets/images/project-crm.svg" alt="Preview" style="max-width: 100%; max-height: 110px; object-fit: contain; border-radius: 8px;" onerror="this.src='assets/img/portfolio/portfolio-1.webp'">
+                </div>
+              </div>
+
+              <div class="col-md-6">
+                <label class="form-label small fw-semibold" style="color: var(--heading-color);">Loyiha Tafsilotlari Havolasi</label>
+                <input type="text" id="modalProjLink" class="form-control" value="/portfolio-details" required>
+              </div>
+
+              <div class="col-md-6">
+                <label class="form-label small fw-semibold" style="color: var(--heading-color);">GitHub Repozitoriy Havolasi (Ixtiyoriy)</label>
+                <input type="text" id="modalProjGithub" class="form-control" placeholder="https://github.com/...">
+              </div>
+            </div>
+
+          </div>
+          <div class="modal-footer border-secondary-subtle">
+            <button type="button" class="btn btn-sm btn-secondary" data-bs-dismiss="modal">Bekor qilish</button>
+            <button type="submit" class="btn btn-sm btn-main">
+              <i class="bi bi-save me-1"></i> Loyihani Saqlash
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==========================================================================
+       MODAL 2: ADD / EDIT SERVICE MODAL
+       ========================================================================== -->
+  <div class="modal fade" id="serviceModal" tabindex="-1" aria-labelledby="serviceModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header border-secondary-subtle">
+          <h5 class="modal-title fw-bold" id="serviceModalLabel">Xizmat Qo'shish / Tahrirlash</h5>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <form id="serviceModalForm">
+          <div class="modal-body">
+            <input type="hidden" id="modalServId">
+            <div class="mb-3">
+              <label class="form-label small fw-semibold" style="color: var(--heading-color);">Raqam (Tartib)</label>
+              <input type="text" id="modalServNum" class="form-control" placeholder="Masalan: 01" required>
+            </div>
+            <div class="mb-3">
+              <label class="form-label small fw-semibold" style="color: var(--heading-color);">Xizmat Nomi</label>
+              <input type="text" id="modalServTitle" class="form-control" placeholder="Masalan: UI / UX Dizayn" required>
+            </div>
+            <div class="mb-3">
+              <label class="form-label small fw-semibold" style="color: var(--heading-color);">Tavsif</label>
+              <textarea id="modalServDesc" class="form-control" rows="3" placeholder="Ushbu xizmat haqida qisqacha ma'lumot..." required></textarea>
+            </div>
+            <div class="mb-3">
+              <label class="form-label small fw-semibold" style="color: var(--heading-color);">Tafsilot Havolasi</label>
+              <input type="text" id="modalServLink" class="form-control" value="/service-details" required>
+            </div>
+          </div>
+          <div class="modal-footer border-secondary-subtle">
+            <button type="button" class="btn btn-sm btn-secondary" data-bs-dismiss="modal">Bekor qilish</button>
+            <button type="submit" class="btn btn-sm btn-main">Saqlash</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==========================================================================
+       MODAL 3: VIEW MESSAGE DETAILS MODAL
+       ========================================================================== -->
+  <div class="modal fade" id="messageDetailModal" tabindex="-1" aria-labelledby="messageDetailModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header border-secondary-subtle">
+          <h5 class="modal-title fw-bold" id="messageDetailModalLabel">
+            <i class="bi bi-envelope-open me-2 text-info"></i> Xabar Tafsilotlari
+          </h5>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <input type="hidden" id="viewMsgId">
+          <div class="mb-3">
+            <label class="text-muted small text-uppercase">Yuboruvchi:</label>
+            <div class="h5 fw-bold mb-0" id="viewMsgName" style="color: var(--heading-color);"></div>
+          </div>
+          <div class="mb-3">
+            <label class="text-muted small text-uppercase">Email:</label>
+            <div>
+              <a href="#" id="viewMsgEmail" class="text-info text-decoration-none"></a>
+              <button class="btn btn-sm btn-link text-muted p-0 ms-2" onclick="copyViewEmail()" title="Emailni nusxalash"><i class="bi bi-clipboard"></i></button>
+            </div>
+          </div>
+          <div class="mb-3">
+            <label class="text-muted small text-uppercase">Mavzu:</label>
+            <div class="fw-semibold" id="viewMsgSubject" style="color: var(--heading-color);"></div>
+          </div>
+          <div class="mb-3">
+            <label class="text-muted small text-uppercase">Yuborilgan Vaqt:</label>
+            <div class="small text-muted font-monospace" id="viewMsgDate"></div>
+          </div>
+          <div class="mb-3">
+            <label class="text-muted small text-uppercase">Xabar Matni:</label>
+            <div class="p-3 rounded-3 border border-secondary-subtle bg-black bg-opacity-25" id="viewMsgBody" style="white-space: pre-wrap; font-size: 14px;"></div>
+          </div>
+        </div>
+        <div class="modal-footer border-secondary-subtle d-flex justify-content-between">
+          <button type="button" class="btn btn-sm btn-outline-danger" onclick="deleteViewingMessage()">
+            <i class="bi bi-trash me-1"></i> O'chirish
+          </button>
+          <div>
+            <a href="#" id="viewMsgReplyBtn" class="btn btn-sm btn-main me-2">
+              <i class="bi bi-reply-fill me-1"></i> Email orqali javob yozish
+            </a>
+            <button type="button" class="btn btn-sm btn-secondary" data-bs-dismiss="modal">Yopish</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==========================================================================
+       MODAL 4: CONFIRM ACTION MODAL
+       ========================================================================== -->
+  <div class="modal fade" id="confirmModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-sm">
+      <div class="modal-content text-center p-3">
+        <div class="mb-3 text-warning fs-1">
+          <i class="bi bi-exclamation-circle"></i>
+        </div>
+        <h5 class="fw-bold mb-2" id="confirmModalTitle">Tasdiqlang</h5>
+        <p class="small text-muted mb-4" id="confirmModalText">Ushbu amalni bajarishga ishonchingiz komilmi?</p>
+        <div class="d-flex justify-content-center gap-2">
+          <button type="button" class="btn btn-sm btn-secondary px-3" data-bs-dismiss="modal">Yo'q, bekor qilish</button>
+          <button type="button" class="btn btn-sm btn-danger px-3" id="confirmModalActionBtn">Ha, bajarish</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==========================================================================
+       FLOATING TOAST CONTAINER
+       ========================================================================== -->
+  <div class="admin-toast-container" id="adminToastContainer"></div>
+
+  <!-- Bootstrap 5 JS Bundle CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+  <!-- i18n & Theme Script -->
+  <script src="assets/js/i18n.js"></script>
+
+  <!-- ==========================================================================
+       ADMIN CONTROLLER SCRIPT
+       ========================================================================== -->
+  <script>
+    /* Default Jahongir Mirzayev Profile Data */
+    const DEFAULT_PROFILE_DATA = {
+      name: "Jahongir Mirzayev",
+      role: "Full-Stack Dasturchi & Dasturiy Muhandis",
+      status: "🟢 Yangi loyihalar uchun ochiq",
+      lead: "Zamonaviy veb-saytlar, Telegram botlar, Mini Applar va mobil ilovalar yaratish bo'yicha professional Full-Stack dasturchi. Yuqori sifat, tezkorlik va toza arxitektura kafolati.",
+      email: "jahongir.mirzayev@gmail.com",
+      phone: "+998 90 123 45 67",
+      location: "Toshkent, O'zbekiston",
+      telegram: "https://t.me/mirzayevjahongir",
+      github: "https://github.com/mirzayevjahongir",
+      linkedin: "https://linkedin.com/in/mirzayevjahongir"
+    };
+
+    /* 6 ta haqiqiy SVG loyihalar */
+    const DEFAULT_PROJECTS_DATA = [
+      {
+        id: "proj_1",
+        title: "Apex CRM & Analitika Tizimi",
+        category: "Veb Ilova · 2024",
+        desc: "Kompaniya savdolari, mijozlar bazasi va real vaqtdagi daromadlar analitikasini boshqaruvchi to'liq SaaS platforma.",
+        image: "assets/images/project-crm.svg",
+        link: "/portfolio-details",
+        github: "https://github.com/mirzayevjahongir"
+      },
+      {
+        id: "proj_2",
+        title: "Nova Store - E-Commerce Do'kon",
+        category: "Veb Sayt · 2024",
+        desc: "Smart gadjetlar uchun to'liq funksional internet do'kon: savat, onlayn to'lovlar (Click/Payme) va mijoz shaxsiy kabineti.",
+        image: "assets/images/project-ecommerce.svg",
+        link: "/portfolio-details",
+        github: "https://github.com/mirzayevjahongir"
+      },
+      {
+        id: "proj_3",
+        title: "FastFood Express (TMA)",
+        category: "Telegram Mini App · 2024",
+        desc: "Telegram ichida ishlovchi Mini App do'kon. Geolokatsiya orqali manzilni aniqlash, taom tanlash va bir bosishda to'lov qilish.",
+        image: "assets/images/project-tma.svg",
+        link: "https://t.me",
+        github: "https://github.com/mirzayevjahongir"
+      },
+      {
+        id: "proj_4",
+        title: "SmartAssistant AI Bot",
+        category: "Telegram Bot · 2024",
+        desc: "Sun'iy intellekt integratsiyalangan biznes bot: hisobotlarni tahlil qilish, PDF hujjatlar generatsiyasi va avtomatlashtirish.",
+        image: "assets/images/project-telegram-bot.svg",
+        link: "https://t.me",
+        github: "https://github.com/mirzayevjahongir"
+      },
+      {
+        id: "proj_5",
+        title: "HealthTrack Pro",
+        category: "Mobil Ilova · 2024",
+        desc: "Kundalik qadamlar, kaloriyalar, uyqu sifati va suv ichish me'yorlarini hisoblovchi zamonaviy Flutter mobil ilovasi.",
+        image: "assets/images/project-mobile-health.svg",
+        link: "/portfolio-details",
+        github: "https://github.com/mirzayevjahongir"
+      },
+      {
+        id: "proj_6",
+        title: "FinWallet - Moliya Boshqaruvi",
+        category: "Fintech Mobil · 2024",
+        desc: "Xarajat va daromadlarni hisob-kitob qilish, virtual kartalar balansi va oylik byudjet grafigini vizual ko'rsatuvchi ilova.",
+        image: "assets/images/project-mobile-fintech.svg",
+        link: "/portfolio-details",
+        github: "https://github.com/mirzayevjahongir"
+      }
+    ];
+
+    /* Standart Xizmatlar */
+    const DEFAULT_SERVICES_DATA = [
+      {
+        id: "serv_1",
+        num: "01",
+        title: "UI / UX Dizayn",
+        desc: "Foydalanuvchi psixologiyasi va biznes maqsadlariga asoslangan zamonaviy, qulay va chiroyli interfeyslar yaratish.",
+        link: "/service-details"
+      },
+      {
+        id: "serv_2",
+        num: "02",
+        title: "Front-End Dasturlash",
+        desc: "React, Next.js, Vue va Tailwind CSS yordamida tezkor, moslashuvchan (responsive) va qulay veb-ilovalar ishlab chiqish.",
+        link: "/service-details"
+      },
+      {
+        id: "serv_3",
+        num: "03",
+        title: "Telegram Bot & TMA (Mini App)",
+        desc: "Aiogram 3 va Python orqali biznesni avtomatlashtiruvchi botlar, TMA WebApp do'konlar va Click/Payme to'lov tizimlari.",
+        link: "/service-details"
+      },
+      {
+        id: "serv_4",
+        num: "04",
+        title: "Back-End & API Arxitekturasi",
+        desc: "Node.js, Python FastAPI, PostgreSQL va Docker yordamida xavfsiz, yuqori yuklamalarga chidamli server tizimlari.",
+        link: "/service-details"
+      },
+      {
+        id: "serv_5",
+        num: "05",
+        title: "Mobil Ilovalar (iOS & Android)",
+        desc: "Flutter va React Native texnologiyalarida har ikkala platforma uchun bir xil yuqori sifatda ishlovchi mobil dasturlar.",
+        link: "/service-details"
+      }
+    ];
+
+    /* Initialization */
+    document.addEventListener('DOMContentLoaded', () => {
+      checkAdminAuth();
+      ensureDefaultData();
+      renderAdminDashboard();
+      initAdminTabs();
+    });
+
+    /* --- Data Initialization --- */
+    function ensureDefaultData() {
+      if (!localStorage.getItem('workfolio_profile')) {
+        localStorage.setItem('workfolio_profile', JSON.stringify(DEFAULT_PROFILE_DATA));
+      }
+      if (!localStorage.getItem('workfolio_projects')) {
+        localStorage.setItem('workfolio_projects', JSON.stringify(DEFAULT_PROJECTS_DATA));
+      }
+      if (!localStorage.getItem('workfolio_services')) {
+        localStorage.setItem('workfolio_services', JSON.stringify(DEFAULT_SERVICES_DATA));
+      }
+    }
+
+    /* --- Auth Check --- */
+    function checkAdminAuth() {
+      const isAuthSession = sessionStorage.getItem('workfolio_admin_session') === 'true';
+      const isAuthLocal = localStorage.getItem('workfolio_admin_session') === 'true';
+      const isAuth = isAuthSession || isAuthLocal;
+
+      const overlay = document.getElementById('adminLoginOverlay');
+      if (isAuth) {
+        overlay.classList.add('d-none');
+        syncWithBackend();
+      } else {
+        overlay.classList.remove('d-none');
+      }
+
+      // Toggle Password Visibility
+      const togglePasswordBtn = document.getElementById('togglePasswordBtn');
+      if (togglePasswordBtn) {
+        togglePasswordBtn.addEventListener('click', () => {
+          const passInput = document.getElementById('adminPassInput');
+          const icon = togglePasswordBtn.querySelector('i');
+          if (passInput.type === 'password') {
+            passInput.type = 'text';
+            icon.classList.remove('bi-eye');
+            icon.classList.add('bi-eye-slash');
+          } else {
+            passInput.type = 'password';
+            icon.classList.remove('bi-eye-slash');
+            icon.classList.add('bi-eye');
+          }
+        });
+      }
+
+      // Login Form Submit (Email & Password: ithac4290@gmail.com & jahongir@1212)
+      document.getElementById('adminLoginForm').addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const emailInput = document.getElementById('adminEmailInput');
+        const passInput = document.getElementById('adminPassInput');
+        const email = emailInput ? emailInput.value.trim() : '';
+        const pass = passInput ? passInput.value.trim() : '';
+        const alertEl = document.getElementById('loginAlert');
+        const alertTextEl = document.getElementById('loginAlertText');
+
+        const REQUIRED_EMAIL = 'ithac4290@gmail.com';
+        const REQUIRED_PASS = 'jahongir@1212';
+
+        // 1. Try Go backend /api/auth/login
+        try {
+          const res = await fetch('/api/auth/login', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ email: email, password: pass })
+          });
+          const data = await res.json();
+          if (res.ok && data.success && data.token) {
+            sessionStorage.setItem('go_admin_token', data.token);
+            sessionStorage.setItem('workfolio_admin_email', email);
+            if (alertEl) alertEl.classList.add('d-none');
+            doLoginSuccess();
+            return;
+          }
+        } catch (netErr) {
+          console.warn('Backend login connection error:', netErr);
+        }
+
+        // 2. Exact match check
+        if (email.toLowerCase() === REQUIRED_EMAIL.toLowerCase() && pass === REQUIRED_PASS) {
+          if (alertEl) alertEl.classList.add('d-none');
+          sessionStorage.setItem('workfolio_admin_email', email);
+          doLoginSuccess();
+        } else {
+          if (alertEl) {
+            if (alertTextEl) alertTextEl.textContent = "Email yoki parol noto'g'ri! Iltimos, qayta tekshiring.";
+            alertEl.classList.remove('d-none');
+          }
+        }
+      });
+
+      // Logout
+      document.getElementById('adminLogoutBtn').addEventListener('click', () => {
+        showConfirm("Chiqishni tasdiqlang", "Haqiqatan ham admin paneldan chiqmoqchimisiz?", () => {
+          sessionStorage.removeItem('workfolio_admin_session');
+          localStorage.removeItem('workfolio_admin_session');
+          sessionStorage.removeItem('go_admin_token');
+          sessionStorage.removeItem('workfolio_admin_email');
+          window.location.reload();
+        });
+      });
+    }
+
+    async function doLoginSuccess() {
+      sessionStorage.setItem('workfolio_admin_session', 'true');
+      const remember = document.getElementById('rememberMeCheck')?.checked;
+      if (remember) {
+        localStorage.setItem('workfolio_admin_session', 'true');
+      }
+      document.getElementById('adminLoginOverlay').classList.add('d-none');
+      showToast("Muvaffaqiyatli!", "Tizimga xush kelibsiz!", "success");
+      renderAdminDashboard();
+      syncWithBackend();
+    }
+
+    async function syncWithBackend() {
+      try {
+        // 1. Fetch live stats from Golang Backend
+        const statsRes = await fetch('/api/stats');
+        if (statsRes.ok) {
+          const stats = await statsRes.json();
+          if (stats.total_visits !== undefined) {
+            const vEl = document.getElementById('statVisitsCount');
+            if (vEl) vEl.textContent = stats.total_visits;
+          }
+        }
+
+        // 2. Auth with Golang Backend & Sync Messages
+        let token = sessionStorage.getItem('go_admin_token');
+        if (!token) {
+          const pass = document.getElementById('adminPassInput')?.value.trim() || 'jahongir@1212';
+          const email = document.getElementById('adminEmailInput')?.value.trim() || 'ithac4290@gmail.com';
+          const authRes = await fetch('/api/auth/login', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ email: email, password: pass })
+          });
+          if (authRes.ok) {
+            const authData = await authRes.json();
+            token = authData.token;
+            if (token) sessionStorage.setItem('go_admin_token', token);
+          }
+        }
+
+        if (token) {
+          const msgRes = await fetch('/api/messages', {
+            headers: { 'Authorization': 'Bearer ' + token }
+          });
+          if (msgRes.ok) {
+            const data = await msgRes.json();
+            if (data.messages && data.messages.length > 0) {
+              const currentMsgs = getStoredMessages();
+              const serverMsgs = data.messages.map(m => ({
+                id: m.id,
+                name: m.name,
+                email: m.email,
+                subject: m.subject,
+                message: m.message,
+                date: new Date(m.created_at).toLocaleString(),
+                unread: !m.is_read
+              }));
+
+              const merged = [...serverMsgs];
+              currentMsgs.forEach(cm => {
+                if (!merged.find(sm => sm.id === cm.id)) {
+                  merged.push(cm);
+                }
+              });
+              localStorage.setItem('workfolio_messages', JSON.stringify(merged));
+              renderAdminDashboard();
+            }
+          }
+        }
+      } catch (err) {
+        console.warn('Golang backend sync notice:', err);
+      }
+    }
+
+    /* --- Tab Navigation --- */
+    function initAdminTabs() {
+      document.querySelectorAll('#adminTabsNav .admin-nav-item').forEach(item => {
+        item.addEventListener('click', function() {
+          const tabId = this.getAttribute('data-tab');
+          switchAdminTab(tabId);
+        });
+      });
+
+      // Search listeners
+      const projSearch = document.getElementById('projectSearchInput');
+      if (projSearch) {
+        projSearch.addEventListener('input', function() {
+          const q = this.value.toLowerCase().trim();
+          const projects = getStoredProjects();
+          const filtered = projects.filter(p => 
+            (p.title && p.title.toLowerCase().includes(q)) ||
+            (p.category && p.category.toLowerCase().includes(q)) ||
+            (p.desc && p.desc.toLowerCase().includes(q))
+          );
+          renderProjectsTable(filtered);
+        });
+      }
+
+      const msgSearch = document.getElementById('messageSearchInput');
+      if (msgSearch) {
+        msgSearch.addEventListener('input', function() {
+          const q = this.value.toLowerCase().trim();
+          const messages = getStoredMessages();
+          const filtered = messages.filter(m =>
+            (m.name && m.name.toLowerCase().includes(q)) ||
+            (m.email && m.email.toLowerCase().includes(q)) ||
+            (m.subject && m.subject.toLowerCase().includes(q)) ||
+            (m.message && m.message.toLowerCase().includes(q))
+          );
+          renderMessagesTable(filtered);
+        });
+      }
+    }
+
+    function switchAdminTab(tabId) {
+      document.querySelectorAll('#adminTabsNav .admin-nav-item').forEach(el => el.classList.remove('active'));
+      document.querySelectorAll('.admin-tab-pane').forEach(el => el.classList.add('d-none'));
+
+      const activeNav = document.querySelector(`[data-tab="${tabId}"]`);
+      const targetPane = document.getElementById(tabId);
+      if (activeNav) activeNav.classList.add('active');
+      if (targetPane) targetPane.classList.remove('d-none');
+
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    /* --- Helpers for Data --- */
+    function getStoredProfile() {
+      try {
+        const raw = localStorage.getItem('workfolio_profile');
+        return raw ? JSON.parse(raw) : DEFAULT_PROFILE_DATA;
+      } catch (e) {
+        return DEFAULT_PROFILE_DATA;
+      }
+    }
+
+    function getStoredProjects() {
+      try {
+        const raw = localStorage.getItem('workfolio_projects');
+        return raw ? JSON.parse(raw) : DEFAULT_PROJECTS_DATA;
+      } catch (e) {
+        return DEFAULT_PROJECTS_DATA;
+      }
+    }
+
+    function getStoredServices() {
+      try {
+        const raw = localStorage.getItem('workfolio_services');
+        return raw ? JSON.parse(raw) : DEFAULT_SERVICES_DATA;
+      } catch (e) {
+        return DEFAULT_SERVICES_DATA;
+      }
+    }
+
+    function getStoredMessages() {
+      try {
+        const raw = localStorage.getItem('workfolio_messages');
+        return raw ? JSON.parse(raw) : [];
+      } catch (e) {
+        return [];
+      }
+    }
+
+    /* --- Dashboard Rendering --- */
+    function renderAdminDashboard() {
+      const profile = getStoredProfile();
+      const projects = getStoredProjects();
+      const services = getStoredServices();
+      const messages = getStoredMessages();
+
+      // Sidebar & Header Profile Sync
+      const firstName = profile.name ? profile.name.split(' ')[0] : 'Jahongir';
+      document.getElementById('overviewHelloName').textContent = firstName;
+      document.getElementById('sidebarUserName').textContent = profile.name || 'Jahongir Mirzayev';
+
+      // Stat Counters
+      const visits = localStorage.getItem('workfolio_visits') || '142';
+      document.getElementById('statVisitsCount').textContent = visits;
+      document.getElementById('statProjectsCount').textContent = projects.length;
+      document.getElementById('statMessagesCount').textContent = messages.length;
+      document.getElementById('sidebarProjectsBadge').textContent = projects.length;
+      document.getElementById('sidebarServicesBadge').textContent = services.length;
+
+      const unreadCount = messages.filter(m => m.unread).length;
+      document.getElementById('unreadBadge').textContent = unreadCount;
+
+      // Render Tables
+      renderOverviewMessages(messages);
+      renderProjectsTable(projects);
+      renderServicesTable(services);
+      renderMessagesTable(messages);
+
+      // Load Forms
+      loadProfileForm();
+      loadStatsForm();
+      loadTelegramForm();
+    }
+
+    /* --- Overview Messages Table --- */
+    function renderOverviewMessages(messages) {
+      const ovTable = document.getElementById('overviewMessagesTable');
+      if (messages.length === 0) {
+        ovTable.innerHTML = '<tr><td colspan="6" class="text-center py-4 text-muted">Hozircha xabarlar yo\'q. <button class="btn btn-sm btn-link p-0 ms-1" onclick="addMockMessage()">Sinov xabari yaratish</button></td></tr>';
+        return;
+      }
+      ovTable.innerHTML = messages.slice(0, 5).map(m => `
+        <tr class="${m.unread ? 'table-active' : ''}">
+          <td><strong>${escapeHtml(m.name)}</strong></td>
+          <td>${escapeHtml(m.email)}</td>
+          <td>${escapeHtml(m.subject)}</td>
+          <td><small class="text-muted font-monospace">${escapeHtml(m.date || '')}</small></td>
+          <td>
+            ${m.unread ? '<span class="badge bg-danger">Yangi</span>' : '<span class="badge bg-secondary">O\'qilgan</span>'}
+          </td>
+          <td>
+            <button class="btn btn-sm btn-outline-info p-1 px-2" title="Ko'rish" onclick="viewMessageDetail('${m.id}')">
+              <i class="bi bi-eye"></i>
+            </button>
+          </td>
+        </tr>
+      `).join('');
+    }
+
+    /* --- Projects Table & Actions --- */
+    function renderProjectsTable(projects) {
+      const tbody = document.getElementById('projectsTableBody');
+      if (!projects || projects.length === 0) {
+        tbody.innerHTML = '<tr><td colspan="6" class="text-center py-4 text-muted">Loyihalar topilmadi</td></tr>';
+        return;
+      }
+      tbody.innerHTML = projects.map(p => `
+        <tr>
+          <td>
+            <img src="${p.image}" alt="${escapeHtml(p.title)}" style="width: 50px; height: 35px; object-fit: cover; border-radius: 6px; background: rgba(0,0,0,0.2);" onerror="this.src='assets/img/portfolio/portfolio-1.webp'">
+          </td>
+          <td>
+            <strong style="color: var(--heading-color);">${escapeHtml(p.title)}</strong>
+          </td>
+          <td><span class="badge bg-info-subtle text-info border border-info-subtle">${escapeHtml(p.category || 'Veb')}</span></td>
+          <td class="font-monospace small text-muted">${p.category && p.category.includes('202') ? p.category.split('·')[1] || '2024' : '2024'}</td>
+          <td class="small text-truncate" style="max-width: 250px;">${escapeHtml(p.desc || '')}</td>
+          <td>
+            <button class="btn btn-sm btn-outline-primary me-1" title="Tahrirlash" onclick="editProject('${p.id}')">
+              <i class="bi bi-pencil"></i>
+            </button>
+            <a href="${p.link || '/portfolio-details'}" target="_blank" class="btn btn-sm btn-outline-info me-1" title="Saytda ko'rish">
+              <i class="bi bi-box-arrow-up-right"></i>
+            </a>
+            <button class="btn btn-sm btn-outline-danger" title="O'chirish" onclick="confirmDeleteProject('${p.id}')">
+              <i class="bi bi-trash"></i>
+            </button>
+          </td>
+        </tr>
+      `).join('');
+    }
+
+    function openAddProjectModal() {
+      document.getElementById('modalProjId').value = '';
+      document.getElementById('modalProjTitle').value = '';
+      document.getElementById('modalProjCategory').value = 'Veb Ilova · 2024';
+      document.getElementById('modalProjDesc').value = '';
+      document.getElementById('modalProjImage').value = 'assets/images/project-crm.svg';
+      document.getElementById('modalProjImageSelect').value = 'assets/images/project-crm.svg';
+      document.getElementById('modalProjPreviewImg').src = 'assets/images/project-crm.svg';
+      document.getElementById('modalProjLink').value = '/portfolio-details';
+      document.getElementById('modalProjGithub').value = 'https://github.com/mirzayevjahongir';
+      document.getElementById('projectModalLabel').textContent = "Yangi Loyiha Qo'shish";
+
+      const modal = new bootstrap.Modal(document.getElementById('projectModal'));
+      modal.show();
+    }
+
+    function editProject(projId) {
+      const projects = getStoredProjects();
+      const p = projects.find(item => item.id === projId);
+      if (!p) return;
+
+      document.getElementById('modalProjId').value = p.id;
+      document.getElementById('modalProjTitle').value = p.title;
+      document.getElementById('modalProjCategory').value = p.category;
+      document.getElementById('modalProjDesc').value = p.desc;
+      document.getElementById('modalProjImage').value = p.image;
+      document.getElementById('modalProjPreviewImg').src = p.image;
+      document.getElementById('modalProjLink').value = p.link || '/portfolio-details';
+      document.getElementById('modalProjGithub').value = p.github || '';
+      document.getElementById('projectModalLabel').textContent = "Loyihani Tahrirlash: " + p.title;
+
+      const modal = new bootstrap.Modal(document.getElementById('projectModal'));
+      modal.show();
+    }
+
+    function onPresetImageSelect(val) {
+      if (val) {
+        document.getElementById('modalProjImage').value = val;
+        document.getElementById('modalProjPreviewImg').src = val;
+      }
+    }
+
+    function updateImagePreview(url) {
+      if (url) {
+        document.getElementById('modalProjPreviewImg').src = url;
+      }
+    }
+
+    function handleImageFileUpload(event) {
+      const file = event.target.files[0];
+      if (!file) return;
+
+      const reader = new FileReader();
+      reader.onload = function(e) {
+        const base64Url = e.target.result;
+        document.getElementById('modalProjImage').value = base64Url;
+        document.getElementById('modalProjPreviewImg').src = base64Url;
+        showToast("Rasm yuklandi", "Fayl muvaffaqiyatli tanlandi", "info");
+      };
+      reader.readAsDataURL(file);
+    }
+
+    document.getElementById('projectModalForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      const projId = document.getElementById('modalProjId').value;
+      const title = document.getElementById('modalProjTitle').value.trim();
+      const category = document.getElementById('modalProjCategory').value.trim();
+      const desc = document.getElementById('modalProjDesc').value.trim();
+      const image = document.getElementById('modalProjImage').value.trim();
+      const link = document.getElementById('modalProjLink').value.trim();
+      const github = document.getElementById('modalProjGithub').value.trim();
+
+      let projects = getStoredProjects();
+
+      if (projId) {
+        // Edit existing
+        const p = projects.find(item => item.id === projId);
+        if (p) {
+          p.title = title;
+          p.category = category;
+          p.desc = desc;
+          p.image = image;
+          p.link = link;
+          p.github = github;
+        }
+        showToast("Saqlandi!", `"${title}" loyihasi muvaffaqiyatli yangilandi`, "success");
+      } else {
+        // Add new
+        projects.unshift({
+          id: 'proj_' + Date.now(),
+          title,
+          category,
+          desc,
+          image,
+          link,
+          github
+        });
+        showToast("Qo'shildi!", `"${title}" yangi loyiha sifatida qo'shildi`, "success");
+      }
+
+      localStorage.setItem('workfolio_projects', JSON.stringify(projects));
+      renderAdminDashboard();
+
+      const modalEl = document.getElementById('projectModal');
+      const modalInstance = bootstrap.Modal.getInstance(modalEl);
+      if (modalInstance) modalInstance.hide();
+    });
+
+    function confirmDeleteProject(projId) {
+      const projects = getStoredProjects();
+      const p = projects.find(item => item.id === projId);
+      const title = p ? p.title : "Ushbu loyiha";
+
+      showConfirm("Loyihani o'chirish", `Haqiqatan ham "${title}" loyihasini o'chirmoqchimisiz?`, () => {
+        const filtered = projects.filter(item => item.id !== projId);
+        localStorage.setItem('workfolio_projects', JSON.stringify(filtered));
+        showToast("O'chirildi", `"${title}" muvaffaqiyatli o'chirildi`, "danger");
+        renderAdminDashboard();
+      });
+    }
+
+    function restoreDefaultProjects() {
+      showConfirm("Standart loyihalarni tiklash", "Barcha loyihalar o'rniga 6 ta standart loyihani qayta o'rnatmoqchimisiz?", () => {
+        localStorage.setItem('workfolio_projects', JSON.stringify(DEFAULT_PROJECTS_DATA));
+        showToast("Tiklandi", "6 ta standart loyihalar qayta o'rnatildi", "success");
+        renderAdminDashboard();
+      });
+    }
+
+    /* --- Services Table & Actions --- */
+    function renderServicesTable(services) {
+      const tbody = document.getElementById('servicesTableBody');
+      if (!services || services.length === 0) {
+        tbody.innerHTML = '<tr><td colspan="5" class="text-center py-4 text-muted">Xizmatlar topilmadi</td></tr>';
+        return;
+      }
+      tbody.innerHTML = services.map(s => `
+        <tr>
+          <td><span class="badge bg-primary-subtle text-primary font-monospace">${escapeHtml(s.num || '01')}</span></td>
+          <td><strong style="color: var(--heading-color);">${escapeHtml(s.title)}</strong></td>
+          <td class="small text-muted">${escapeHtml(s.desc)}</td>
+          <td><a href="${s.link}" target="_blank" class="small text-info">${escapeHtml(s.link)}</a></td>
+          <td>
+            <button class="btn btn-sm btn-outline-primary me-1" title="Tahrirlash" onclick="editService('${s.id}')">
+              <i class="bi bi-pencil"></i>
+            </button>
+            <button class="btn btn-sm btn-outline-danger" title="O'chirish" onclick="confirmDeleteService('${s.id}')">
+              <i class="bi bi-trash"></i>
+            </button>
+          </td>
+        </tr>
+      `).join('');
+    }
+
+    function openAddServiceModal() {
+      const services = getStoredServices();
+      const nextNum = (services.length + 1).toString().padStart(2, '0');
+      document.getElementById('modalServId').value = '';
+      document.getElementById('modalServNum').value = nextNum;
+      document.getElementById('modalServTitle').value = '';
+      document.getElementById('modalServDesc').value = '';
+      document.getElementById('modalServLink').value = '/service-details';
+      document.getElementById('serviceModalLabel').textContent = "Yangi Xizmat Qo'shish";
+
+      const modal = new bootstrap.Modal(document.getElementById('serviceModal'));
+      modal.show();
+    }
+
+    function editService(servId) {
+      const services = getStoredServices();
+      const s = services.find(item => item.id === servId);
+      if (!s) return;
+
+      document.getElementById('modalServId').value = s.id;
+      document.getElementById('modalServNum').value = s.num;
+      document.getElementById('modalServTitle').value = s.title;
+      document.getElementById('modalServDesc').value = s.desc;
+      document.getElementById('modalServLink').value = s.link;
+      document.getElementById('serviceModalLabel').textContent = "Xizmatni Tahrirlash: " + s.title;
+
+      const modal = new bootstrap.Modal(document.getElementById('serviceModal'));
+      modal.show();
+    }
+
+    document.getElementById('serviceModalForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      const servId = document.getElementById('modalServId').value;
+      const num = document.getElementById('modalServNum').value.trim();
+      const title = document.getElementById('modalServTitle').value.trim();
+      const desc = document.getElementById('modalServDesc').value.trim();
+      const link = document.getElementById('modalServLink').value.trim();
+
+      let services = getStoredServices();
+
+      if (servId) {
+        const s = services.find(item => item.id === servId);
+        if (s) {
+          s.num = num;
+          s.title = title;
+          s.desc = desc;
+          s.link = link;
+        }
+        showToast("Saqlandi", `"${title}" xizmati yangilandi`, "success");
+      } else {
+        services.push({
+          id: 'serv_' + Date.now(),
+          num,
+          title,
+          desc,
+          link
+        });
+        showToast("Qo'shildi", `"${title}" yangi xizmat qo'shildi`, "success");
+      }
+
+      localStorage.setItem('workfolio_services', JSON.stringify(services));
+      renderAdminDashboard();
+
+      const modalEl = document.getElementById('serviceModal');
+      const modalInstance = bootstrap.Modal.getInstance(modalEl);
+      if (modalInstance) modalInstance.hide();
+    });
+
+    function confirmDeleteService(servId) {
+      showConfirm("Xizmatni o'chirish", "Ushbu xizmatni ro'yxatdan o'chirmoqchimisiz?", () => {
+        let services = getStoredServices().filter(s => s.id !== servId);
+        localStorage.setItem('workfolio_services', JSON.stringify(services));
+        showToast("O'chirildi", "Xizmat o'chirildi", "danger");
+        renderAdminDashboard();
+      });
+    }
+
+    /* --- Messages Inbox --- */
+    let currentMessageFilter = 'all';
+    function filterMessages(filterType) {
+      currentMessageFilter = filterType;
+      document.querySelectorAll('.msg-filter-btn').forEach(btn => {
+        if (btn.getAttribute('data-filter') === filterType) {
+          btn.classList.add('active', 'btn-primary');
+          btn.classList.remove('btn-outline-secondary');
+        } else {
+          btn.classList.remove('active', 'btn-primary');
+          btn.classList.add('btn-outline-secondary');
+        }
+      });
+      const messages = getStoredMessages();
+      renderMessagesTable(messages);
+    }
+
+    function renderMessagesTable(messages) {
+      const tbody = document.getElementById('messagesTableBody');
+      let filtered = messages;
+      if (currentMessageFilter === 'unread') {
+        filtered = messages.filter(m => m.unread);
+      } else if (currentMessageFilter === 'read') {
+        filtered = messages.filter(m => !m.unread);
+      }
+
+      if (filtered.length === 0) {
+        tbody.innerHTML = '<tr><td colspan="6" class="text-center py-4 text-muted">Ushbu bo\'limda xabarlar mavjud emas</td></tr>';
+        return;
+      }
+
+      tbody.innerHTML = filtered.map(m => `
+        <tr class="${m.unread ? 'table-active' : ''}">
+          <td>
+            <strong style="color: var(--heading-color);">${escapeHtml(m.name)}</strong>
+            ${m.unread ? '<span class="badge bg-danger ms-1" style="font-size: 10px;">Yangi</span>' : ''}
+          </td>
+          <td><a href="mailto:${escapeHtml(m.email)}" class="text-info">${escapeHtml(m.email)}</a></td>
+          <td>${escapeHtml(m.subject)}</td>
+          <td class="small text-truncate" style="max-width: 250px;">${escapeHtml(m.message)}</td>
+          <td class="small text-muted font-monospace">${escapeHtml(m.date || '')}</td>
+          <td>
+            <button class="btn btn-sm btn-outline-info me-1" title="To'liq o'qish" onclick="viewMessageDetail('${m.id}')">
+              <i class="bi bi-eye"></i>
+            </button>
+            <button class="btn btn-sm ${m.unread ? 'btn-outline-success' : 'btn-outline-secondary'} me-1" title="${m.unread ? 'O\'qildi deb belgilash' : 'O\'qilmadi deb belgilash'}" onclick="toggleMessageRead('${m.id}')">
+              <i class="bi ${m.unread ? 'bi-check-lg' : 'bi-envelope'}"></i>
+            </button>
+            <button class="btn btn-sm btn-outline-danger" title="O'chirish" onclick="confirmDeleteMessage('${m.id}')">
+              <i class="bi bi-trash"></i>
+            </button>
+          </td>
+        </tr>
+      `).join('');
+    }
+
+    function viewMessageDetail(msgId) {
+      const messages = getStoredMessages();
+      const msg = messages.find(m => m.id === msgId);
+      if (!msg) return;
+
+      // Mark as read automatically when opened
+      if (msg.unread) {
+        msg.unread = false;
+        localStorage.setItem('workfolio_messages', JSON.stringify(messages));
+        renderAdminDashboard();
+      }
+
+      document.getElementById('viewMsgId').value = msg.id;
+      document.getElementById('viewMsgName').textContent = msg.name;
+      const emailEl = document.getElementById('viewMsgEmail');
+      emailEl.textContent = msg.email;
+      emailEl.href = `mailto:${msg.email}?subject=Re: ${encodeURIComponent(msg.subject)}`;
+      document.getElementById('viewMsgSubject').textContent = msg.subject;
+      document.getElementById('viewMsgDate').textContent = msg.date || '';
+      document.getElementById('viewMsgBody').textContent = msg.message;
+
+      document.getElementById('viewMsgReplyBtn').href = `mailto:${msg.email}?subject=Re: ${encodeURIComponent(msg.subject)}`;
+
+      const modal = new bootstrap.Modal(document.getElementById('messageDetailModal'));
+      modal.show();
+    }
+
+    function copyViewEmail() {
+      const email = document.getElementById('viewMsgEmail').textContent;
+      navigator.clipboard.writeText(email).then(() => {
+        showToast("Nusxalandi", "Email xotiraga nusxalandi", "info");
+      });
+    }
+
+    function deleteViewingMessage() {
+      const msgId = document.getElementById('viewMsgId').value;
+      const modalEl = document.getElementById('messageDetailModal');
+      const modalInstance = bootstrap.Modal.getInstance(modalEl);
+      if (modalInstance) modalInstance.hide();
+      confirmDeleteMessage(msgId);
+    }
+
+    function toggleMessageRead(msgId) {
+      const messages = getStoredMessages();
+      const msg = messages.find(m => m.id === msgId);
+      if (msg) {
+        msg.unread = !msg.unread;
+        localStorage.setItem('workfolio_messages', JSON.stringify(messages));
+        showToast("Holat o'zgardi", msg.unread ? "Yangi deb belgilandi" : "O'qildi deb belgilandi", "info");
+        renderAdminDashboard();
+      }
+    }
+
+    function markAllMessagesRead() {
+      const messages = getStoredMessages();
+      messages.forEach(m => m.unread = false);
+      localStorage.setItem('workfolio_messages', JSON.stringify(messages));
+      showToast("Barchasi o'qildi", "Barcha xabarlar o'qilgan deb belgilandi", "success");
+      renderAdminDashboard();
+    }
+
+    function confirmDeleteMessage(msgId) {
+      showConfirm("Xabarni o'chirish", "Haqiqatan ham bu xabarni o'chirib tashlamoqchimisiz?", () => {
+        let messages = getStoredMessages().filter(m => m.id !== msgId);
+        localStorage.setItem('workfolio_messages', JSON.stringify(messages));
+        showToast("O'chirildi", "Xabar muvaffaqiyatli o'chirildi", "danger");
+        renderAdminDashboard();
+      });
+    }
+
+    function clearAllMessages() {
+      showConfirm("Barchasini tozalash", "Barcha kelib tushgan xabarlarni tozalab tashlamoqchimisiz?", () => {
+        localStorage.setItem('workfolio_messages', JSON.stringify([]));
+        showToast("Tozalandi", "Barcha xabarlar o'chirildi", "danger");
+        renderAdminDashboard();
+      });
+    }
+
+    function addMockMessage() {
+      const sampleInquiries = [
+        { name: "Alisher Usmonov", email: "alisher@fintech.uz", subject: "Fintech Mobil Ilova buyurtmasi", message: "Assalomu alaykum Jahongir! Bizga iOS va Android uchun Click/Payme integratsiyali moliyaviy dastur kerak. Loyiha muddatlari va narxlarini muhokama qilsak bo'ladimi?" },
+        { name: "Sardor Rahimov", email: "sardor@restaurant.uz", subject: "FastFood Telegram Mini App (TMA)", message: "Salom Jahongir, restoranimiz uchun TMA orqali taom buyurtma qilish va to'lov qabul qilish tizimi kerak. Siz yaratgan TMA portfoliosini ko'rib qiziqib qoldik." },
+        { name: "Elena Ross", email: "elena@startup-labs.io", subject: "CRM & Analytics SaaS Dashboard", message: "Hi Jahongir! We love your clean dashboard UI on Apex CRM. We are building an enterprise metrics tool and would love to hire you for development." },
+        { name: "Dmitriy Ivanov", email: "dmitriy@ai-solutions.ru", subject: "Telegram AI Bot integratsiyasi", message: "Здравствуйте! Нужен AI бот с интеграцией OpenAI API и PostgreSQL для автоматизации службы поддержки клиентов. Можем созвониться?" }
+      ];
+      const rand = sampleInquiries[Math.floor(Math.random() * sampleInquiries.length)];
+      const messages = getStoredMessages();
+      messages.unshift({
+        id: 'msg_' + Date.now(),
+        name: rand.name,
+        email: rand.email,
+        subject: rand.subject,
+        message: rand.message,
+        date: new Date().toLocaleString(),
+        unread: true
+      });
+      localStorage.setItem('workfolio_messages', JSON.stringify(messages));
+      showToast("Sinov xabari yaratildi!", `"${rand.name}"dan yangi so'rov keldi`, "info");
+      renderAdminDashboard();
+    }
+
+    /* --- Profile Form --- */
+    function loadProfileForm() {
+      const p = getStoredProfile();
+      if (p.name) document.getElementById('profName').value = p.name;
+      if (p.role) document.getElementById('profRole').value = p.role;
+      if (p.status) document.getElementById('profStatus').value = p.status;
+      if (p.lead) document.getElementById('profLead').value = p.lead;
+      if (p.email) document.getElementById('profEmail').value = p.email;
+      if (p.phone) document.getElementById('profPhone').value = p.phone;
+      if (p.location) document.getElementById('profLocation').value = p.location;
+      if (p.telegram) document.getElementById('profTelegram').value = p.telegram;
+      if (p.github) document.getElementById('profGithub').value = p.github;
+      if (p.linkedin) document.getElementById('profLinkedin').value = p.linkedin;
+    }
+
+    function loadDefaultProfileValues() {
+      const p = DEFAULT_PROFILE_DATA;
+      document.getElementById('profName').value = p.name;
+      document.getElementById('profRole').value = p.role;
+      document.getElementById('profStatus').value = p.status;
+      document.getElementById('profLead').value = p.lead;
+      document.getElementById('profEmail').value = p.email;
+      document.getElementById('profPhone').value = p.phone;
+      document.getElementById('profLocation').value = p.location;
+      document.getElementById('profTelegram').value = p.telegram;
+      document.getElementById('profGithub').value = p.github;
+      document.getElementById('profLinkedin').value = p.linkedin;
+      showToast("Tiklandi", "Jahongir Mirzayev standart ma'lumotlari kiritildi", "info");
+    }
+
+    document.getElementById('profileForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      const profileData = {
+        name: document.getElementById('profName').value.trim(),
+        role: document.getElementById('profRole').value.trim(),
+        status: document.getElementById('profStatus').value.trim(),
+        lead: document.getElementById('profLead').value.trim(),
+        email: document.getElementById('profEmail').value.trim(),
+        phone: document.getElementById('profPhone').value.trim(),
+        location: document.getElementById('profLocation').value.trim(),
+        telegram: document.getElementById('profTelegram').value.trim(),
+        github: document.getElementById('profGithub').value.trim(),
+        linkedin: document.getElementById('profLinkedin').value.trim()
+      };
+
+      localStorage.setItem('workfolio_profile', JSON.stringify(profileData));
+      showToast("Muvaffaqiyatli saqlandi!", "Profil ma'lumotlari yangilandi va saytga sinxronlandi", "success");
+      renderAdminDashboard();
+    });
+
+    /* --- Stats Form --- */
+    function loadStatsForm() {
+      const raw = localStorage.getItem('workfolio_stats');
+      if (raw) {
+        try {
+          const s = JSON.parse(raw);
+          if (s.years) document.getElementById('statYearsInput').value = s.years;
+          if (s.projects) document.getElementById('statProjectsInput').value = s.projects;
+          if (s.clients) document.getElementById('statClientsInput').value = s.clients;
+          if (s.awards) document.getElementById('statAwardsInput').value = s.awards;
+        } catch (e) {}
+      }
+    }
+
+    document.getElementById('statsCountersForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      const stats = {
+        years: document.getElementById('statYearsInput').value,
+        projects: document.getElementById('statProjectsInput').value,
+        clients: document.getElementById('statClientsInput').value,
+        awards: document.getElementById('statAwardsInput').value
+      };
+      localStorage.setItem('workfolio_stats', JSON.stringify(stats));
+      showToast("Statistika saqlandi!", "Bosh sahifadagi hisoblagichlar yangilandi", "success");
+    });
+
+    /* --- Telegram Config Form --- */
+    function loadTelegramForm() {
+      const raw = localStorage.getItem('workfolio_telegram_config');
+      if (raw) {
+        try {
+          const cfg = JSON.parse(raw);
+          if (cfg.botToken) document.getElementById('tgBotToken').value = cfg.botToken;
+          if (cfg.chatId) document.getElementById('tgChatId').value = cfg.chatId;
+          document.getElementById('tgNotifyEnabled').checked = !!cfg.enabled;
+        } catch (e) {}
+      }
+    }
+
+    document.getElementById('telegramConfigForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      const cfg = {
+        botToken: document.getElementById('tgBotToken').value.trim(),
+        chatId: document.getElementById('tgChatId').value.trim(),
+        enabled: document.getElementById('tgNotifyEnabled').checked
+      };
+      localStorage.setItem('workfolio_telegram_config', JSON.stringify(cfg));
+      showToast("Telegram sozlamalari saqlandi!", "Bosh sahifa forma xabarlari bilan ulandi", "success");
+    });
+
+    function testTelegramNotification() {
+      const botToken = document.getElementById('tgBotToken').value.trim();
+      const chatId = document.getElementById('tgChatId').value.trim();
+
+      if (!botToken || !chatId) {
+        showToast("Xatolik", "Iltimos, Bot Token va Chat ID maydonlarini to'ldiring!", "warning");
+        return;
+      }
+
+      showToast("Yuborilmoqda...", "Telegram botga sinov xabari jo'natilmoqda", "info");
+
+      const text = `🚀 <b>Workfolio Admin Test Xabari</b>\n\nSalom Jahongir! Telegram botingiz portfolio bilan muvaffaqiyatli ulandi.\n⏰ Vaqt: ${new Date().toLocaleString()}`;
+
+      fetch(`https://api.telegram.org/bot${botToken}/sendMessage`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          chat_id: chatId,
+          text: text,
+          parse_mode: 'HTML'
+        })
+      })
+      .then(res => res.json())
+      .then(data => {
+        if (data.ok) {
+          showToast("Muvaffaqiyatli! ✅", "Telegramingizga test xabari yetib bordi!", "success");
+        } else {
+          showToast("Xatolik: " + data.description, "Telegram API xatolik qaytardi", "danger");
+        }
+      })
+      .catch(err => {
+        showToast("Tarmoq xatoligi", "Telegram serveriga ulanib bo'lmadi", "danger");
+      });
+    }
+
+    /* --- Change Admin Password --- */
+    document.getElementById('changePassForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      const newPass = document.getElementById('newAdminPass').value.trim();
+      if (newPass) {
+        localStorage.setItem('workfolio_admin_pass', newPass);
+        document.getElementById('newAdminPass').value = '';
+        showToast("Parol yangilandi!", "Keyingi safar ushbu yangi parol bilan kirasiz", "success");
+      }
+    });
+
+    /* --- Backup Export & Import --- */
+    function exportDataBackup() {
+      const backup = {
+        profile: getStoredProfile(),
+        projects: getStoredProjects(),
+        services: getStoredServices(),
+        messages: getStoredMessages(),
+        stats: JSON.parse(localStorage.getItem('workfolio_stats') || '{}'),
+        telegram: JSON.parse(localStorage.getItem('workfolio_telegram_config') || '{}'),
+        theme: localStorage.getItem('workfolio_theme') || 'dark',
+        lang: localStorage.getItem('workfolio_lang') || 'uz',
+        exportedAt: new Date().toISOString()
+      };
+      const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(backup, null, 2));
+      const downloadAnchor = document.createElement('a');
+      downloadAnchor.setAttribute("href", dataStr);
+      downloadAnchor.setAttribute("download", "mirzayev_portfolio_backup_" + new Date().toISOString().slice(0, 10) + ".json");
+      document.body.appendChild(downloadAnchor);
+      downloadAnchor.click();
+      downloadAnchor.remove();
+      showToast("Zaxira yuklandi", "JSON fayli muvaffaqiyatli saqlandi", "success");
+    }
+
+    function importDataBackup(event) {
+      const file = event.target.files[0];
+      if (!file) return;
+      const reader = new FileReader();
+      reader.onload = function(e) {
+        try {
+          const data = JSON.parse(e.target.result);
+          if (data.profile) localStorage.setItem('workfolio_profile', JSON.stringify(data.profile));
+          if (data.projects) localStorage.setItem('workfolio_projects', JSON.stringify(data.projects));
+          if (data.services) localStorage.setItem('workfolio_services', JSON.stringify(data.services));
+          if (data.messages) localStorage.setItem('workfolio_messages', JSON.stringify(data.messages));
+          if (data.stats) localStorage.setItem('workfolio_stats', JSON.stringify(data.stats));
+          if (data.telegram) localStorage.setItem('workfolio_telegram_config', JSON.stringify(data.telegram));
+          
+          showToast("Zaxira tiklandi! ✅", "Barcha ma'lumotlar qayta tiklandi", "success");
+          renderAdminDashboard();
+        } catch (err) {
+          showToast("Xatolik", "Zaxira faylini o'qib bo'lmadi!", "danger");
+        }
+      };
+      reader.readAsText(file);
+    }
+
+    /* --- Reset to Defaults --- */
+    function confirmResetSystem() {
+      showConfirm("Standart holatga qaytarish", "Barcha o'zgartirishlar tozalanib, tizim asl Jahongir Mirzayev holatiga keltiriladi. Davom etasizmi?", () => {
+        localStorage.removeItem('workfolio_profile');
+        localStorage.removeItem('workfolio_projects');
+        localStorage.removeItem('workfolio_services');
+        localStorage.removeItem('workfolio_messages');
+        localStorage.removeItem('workfolio_stats');
+        localStorage.removeItem('workfolio_telegram_config');
+        localStorage.removeItem('workfolio_admin_pass');
+        ensureDefaultData();
+        showToast("Tizim tiklandi", "Barcha parametrlar standart holatga keltirildi", "success");
+        setTimeout(() => window.location.reload(), 1200);
+      });
+    }
+
+    /* --- Global Confirmation Modal Helper --- */
+    let currentConfirmCallback = null;
+    function showConfirm(title, text, onConfirm) {
+      document.getElementById('confirmModalTitle').textContent = title;
+      document.getElementById('confirmModalText').textContent = text;
+      currentConfirmCallback = onConfirm;
+
+      const modalEl = document.getElementById('confirmModal');
+      const modal = new bootstrap.Modal(modalEl);
+      modal.show();
+    }
+
+    document.getElementById('confirmModalActionBtn').addEventListener('click', () => {
+      const modalEl = document.getElementById('confirmModal');
+      const modalInstance = bootstrap.Modal.getInstance(modalEl);
+      if (modalInstance) modalInstance.hide();
+
+      if (typeof currentConfirmCallback === 'function') {
+        currentConfirmCallback();
+        currentConfirmCallback = null;
+      }
+    });
+
+    /* --- Floating Toast Notification Engine --- */
+    function showToast(title, message, type = 'info') {
+      const container = document.getElementById('adminToastContainer');
+      if (!container) return;
+
+      const iconMap = {
+        success: 'bi-check-circle-fill text-success',
+        info: 'bi-info-circle-fill text-info',
+        warning: 'bi-exclamation-triangle-fill text-warning',
+        danger: 'bi-x-circle-fill text-danger'
+      };
+      const icon = iconMap[type] || iconMap.info;
+
+      const toast = document.createElement('div');
+      toast.className = 'admin-toast';
+      toast.innerHTML = `
+        <div class="fs-4"><i class="bi ${icon}"></i></div>
+        <div class="flex-grow-1 overflow-hidden">
+          <div class="fw-bold small text-truncate">${escapeHtml(title)}</div>
+          <div class="small text-muted text-truncate" style="font-size: 12px;">${escapeHtml(message)}</div>
+        </div>
+        <button type="button" class="btn-close btn-close-white small p-1" style="font-size: 10px;"></button>
+      `;
+
+      toast.querySelector('.btn-close').addEventListener('click', () => {
+        toast.style.opacity = '0';
+        toast.style.transform = 'translateX(100%)';
+        setTimeout(() => toast.remove(), 300);
+      });
+
+      container.appendChild(toast);
+
+      setTimeout(() => {
+        if (toast.parentNode) {
+          toast.style.opacity = '0';
+          toast.style.transform = 'translateX(100%)';
+          setTimeout(() => toast.remove(), 300);
+        }
+      }, 3500);
+    }
+
+    /* --- Utility: Escape HTML --- */
+    function escapeHtml(str) {
+      if (!str) return '';
+      return String(str).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+    }
+  </script>
+</body>
+
+</html>

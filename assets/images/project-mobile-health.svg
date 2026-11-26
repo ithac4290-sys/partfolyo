@@ -1,0 +1,85 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bgGrad5" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0b1320" />
+      <stop offset="50%" stop-color="#061c1e" />
+      <stop offset="100%" stop-color="#040b11" />
+    </linearGradient>
+    <linearGradient id="emeraldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#10b981" />
+      <stop offset="100%" stop-color="#06b6d4" />
+    </linearGradient>
+  </defs>
+  <rect width="100%" height="100%" fill="url(#bgGrad5)"/>
+  <circle cx="400" cy="250" r="180" fill="#10b981" opacity="0.1" filter="blur(70px)"/>
+
+  <!-- Mobile Phone Mockup -->
+  <g transform="translate(260, 20)">
+    <!-- Device border -->
+    <rect width="280" height="460" rx="36" fill="#090d16" stroke="#334155" stroke-width="3"/>
+    <rect x="5" y="5" width="270" height="450" rx="32" fill="#0f172a"/>
+
+    <!-- Dynamic Island / Notch -->
+    <rect x="95" y="14" width="90" height="20" rx="10" fill="#000000"/>
+    <circle cx="168" cy="24" r="4.5" fill="#1e293b"/>
+
+    <!-- App Header -->
+    <g transform="translate(20, 48)">
+      <text x="0" y="20" fill="#94a3b8" font-family="sans-serif" font-size="11">Xayrli tong 👋</text>
+      <text x="0" y="38" fill="#ffffff" font-family="sans-serif" font-size="16" font-weight="bold">HealthTrack Pro</text>
+      <!-- Profile circle -->
+      <circle cx="225" cy="26" r="16" fill="url(#emeraldGrad)"/>
+      <text x="220" y="31" fill="#ffffff" font-family="sans-serif" font-size="12">J</text>
+    </g>
+
+    <!-- Activity Rings / Main Widget -->
+    <g transform="translate(20, 105)">
+      <rect width="240" height="115" rx="16" fill="#1e293b" stroke="#334155" stroke-width="1"/>
+      <circle cx="60" cy="58" r="40" fill="none" stroke="#064e3b" stroke-width="8"/>
+      <circle cx="60" cy="58" r="40" fill="none" stroke="#10b981" stroke-width="8" stroke-dasharray="190" stroke-dashoffset="50" stroke-linecap="round"/>
+      <text x="44" y="63" fill="#ffffff" font-family="sans-serif" font-size="13" font-weight="bold">78%</text>
+
+      <text x="115" y="35" fill="#f8fafc" font-family="sans-serif" font-size="13" font-weight="bold">8,450 qadam</text>
+      <text x="115" y="52" fill="#6ee7b7" font-family="sans-serif" font-size="11">Kunlik maqsad: 10k</text>
+      <text x="115" y="75" fill="#94a3b8" font-family="sans-serif" font-size="10">🔥 520 kcal sarflandi</text>
+      <text x="115" y="92" fill="#94a3b8" font-family="sans-serif" font-size="10">⏱ 48 daqiqa faollik</text>
+    </g>
+
+    <!-- Metrics Row -->
+    <g transform="translate(20, 230)">
+      <!-- Heart Rate -->
+      <rect x="0" y="0" width="115" height="95" rx="14" fill="#1e293b" stroke="#334155" stroke-width="1"/>
+      <text x="12" y="24" fill="#f43f5e" font-size="16">❤️</text>
+      <text x="12" y="44" fill="#94a3b8" font-family="sans-serif" font-size="10">Yurak urishi</text>
+      <text x="12" y="68" fill="#ffffff" font-family="sans-serif" font-size="17" font-weight="bold">72 <tspan font-size="10" font-weight="normal" fill="#94a3b8">bpm</tspan></text>
+      <text x="12" y="84" fill="#34d399" font-family="sans-serif" font-size="9">Normal holat</text>
+
+      <!-- Sleep -->
+      <rect x="125" y="0" width="115" height="95" rx="14" fill="#1e293b" stroke="#334155" stroke-width="1"/>
+      <text x="137" y="24" fill="#818cf8" font-size="16">🌙</text>
+      <text x="137" y="44" fill="#94a3b8" font-family="sans-serif" font-size="10">Uyqu sifati</text>
+      <text x="137" y="68" fill="#ffffff" font-family="sans-serif" font-size="17" font-weight="bold">7<tspan font-size="10" font-weight="normal" fill="#94a3b8">s</tspan> 45<tspan font-size="10" font-weight="normal" fill="#94a3b8">d</tspan></text>
+      <text x="137" y="84" fill="#818cf8" font-family="sans-serif" font-size="9">Chuqur uyqu</text>
+    </g>
+
+    <!-- Water intake bar -->
+    <g transform="translate(20, 335)">
+      <rect width="240" height="50" rx="12" fill="#1e293b" stroke="#334155" stroke-width="1"/>
+      <text x="14" y="24" fill="#38bdf8" font-size="14">💧</text>
+      <text x="36" y="23" fill="#ffffff" font-family="sans-serif" font-size="11" font-weight="600">Suv ichish me'yori</text>
+      <text x="180" y="23" fill="#38bdf8" font-family="sans-serif" font-size="11">1.8 / 2.5 L</text>
+      <rect x="14" y="32" width="212" height="8" rx="4" fill="#0f172a"/>
+      <rect x="14" y="32" width="150" height="8" rx="4" fill="#38bdf8"/>
+    </g>
+
+    <!-- Bottom Navigation Bar -->
+    <g transform="translate(20, 398)">
+      <rect width="240" height="42" rx="21" fill="#111827" stroke="#1f2937" stroke-width="1"/>
+      <circle cx="35" cy="21" r="14" fill="#10b981" opacity="0.2"/>
+      <text x="29" y="26" fill="#10b981" font-size="13">🏠</text>
+      <text x="85" y="26" fill="#64748b" font-size="13">📈</text>
+      <text x="145" y="26" fill="#64748b" font-size="13">🎯</text>
+      <text x="200" y="26" fill="#64748b" font-size="13">⚙️</text>
+    </g>
+  </g>
+</svg>

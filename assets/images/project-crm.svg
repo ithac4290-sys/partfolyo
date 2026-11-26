@@ -1,0 +1,79 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bgGrad1" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0f172a" />
+      <stop offset="50%" stop-color="#1e1b4b" />
+      <stop offset="100%" stop-color="#090d16" />
+    </linearGradient>
+    <linearGradient id="cyanBlue" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#06b6d4" />
+      <stop offset="100%" stop-color="#3b82f6" />
+    </linearGradient>
+    <linearGradient id="glowCard" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#1e293b" stop-opacity="0.9" />
+      <stop offset="100%" stop-color="#0f172a" stop-opacity="0.9" />
+    </linearGradient>
+  </defs>
+  <rect width="100%" height="100%" fill="url(#bgGrad1)"/>
+  <circle cx="650" cy="120" r="180" fill="#3b82f6" opacity="0.1" filter="blur(60px)"/>
+  <circle cx="150" cy="380" r="160" fill="#06b6d4" opacity="0.1" filter="blur(60px)"/>
+  
+  <!-- Browser Window Mockup -->
+  <g transform="translate(60, 45)">
+    <!-- Window Outline -->
+    <rect width="680" height="410" rx="14" fill="#0b1120" stroke="#334155" stroke-width="1.5"/>
+    <!-- Window Header -->
+    <path d="M 0,14 C 0,6.268 6.268,0 14,0 L 666,0 C 673.732,0 680,6.268 680,14 L 680,44 L 0,44 Z" fill="#1e293b"/>
+    <!-- Dots -->
+    <circle cx="25" cy="22" r="5" fill="#ef4444"/>
+    <circle cx="42" cy="22" r="5" fill="#f59e0b"/>
+    <circle cx="59" cy="22" r="5" fill="#10b981"/>
+    <!-- Search Bar -->
+    <rect x="90" y="11" width="300" height="22" rx="6" fill="#0f172a" stroke="#334155" stroke-width="1"/>
+    <text x="105" y="26" fill="#64748b" font-family="monospace" font-size="10">https://apex-crm.enterprise.app</text>
+    
+    <!-- Sidebar -->
+    <rect x="0" y="44" width="130" height="366" fill="#0f172a" stroke="#1e293b" stroke-width="1"/>
+    <rect x="16" y="65" width="98" height="12" rx="4" fill="url(#cyanBlue)"/>
+    <rect x="16" y="95" width="80" height="8" rx="3" fill="#334155"/>
+    <rect x="16" y="115" width="70" height="8" rx="3" fill="#334155"/>
+    <rect x="16" y="135" width="88" height="8" rx="3" fill="#334155"/>
+    <rect x="16" y="155" width="60" height="8" rx="3" fill="#334155"/>
+
+    <!-- Content Area -->
+    <g transform="translate(150, 60)">
+      <!-- Stats Cards -->
+      <rect x="0" y="0" width="150" height="75" rx="8" fill="url(#glowCard)" stroke="#334155" stroke-width="1"/>
+      <text x="14" y="24" fill="#94a3b8" font-family="sans-serif" font-size="10">Umumiy Daromad</text>
+      <text x="14" y="48" fill="#f8fafc" font-family="sans-serif" font-weight="bold" font-size="16">$124,580</text>
+      <text x="14" y="64" fill="#10b981" font-family="sans-serif" font-size="9">+18.4% o'sish</text>
+
+      <rect x="170" y="0" width="150" height="75" rx="8" fill="url(#glowCard)" stroke="#334155" stroke-width="1"/>
+      <text x="184" y="24" fill="#94a3b8" font-family="sans-serif" font-size="10">Faol Foydalanuvchilar</text>
+      <text x="184" y="48" fill="#f8fafc" font-family="sans-serif" font-weight="bold" font-size="16">18,420 ta</text>
+      <text x="184" y="64" fill="#06b6d4" font-family="sans-serif" font-size="9">+12.1% yangi</text>
+
+      <rect x="340" y="0" width="150" height="75" rx="8" fill="url(#glowCard)" stroke="#334155" stroke-width="1"/>
+      <text x="354" y="24" fill="#94a3b8" font-family="sans-serif" font-size="10">Konversiya Ko'rsatkichi</text>
+      <text x="354" y="48" fill="#f8fafc" font-family="sans-serif" font-weight="bold" font-size="16">4.85%</text>
+      <text x="354" y="64" fill="#8b5cf6" font-family="sans-serif" font-size="9">Yuqori samaradorlik</text>
+
+      <!-- Main Chart Mockup -->
+      <rect x="0" y="95" width="490" height="150" rx="8" fill="#0f172a" stroke="#1e293b" stroke-width="1"/>
+      <text x="16" y="120" fill="#cbd5e1" font-family="sans-serif" font-size="11" font-weight="600">Savdo va Tranzaksiyalar Tahlili</text>
+      <!-- Chart line -->
+      <path d="M 20,210 Q 70,160 130,180 T 240,140 T 350,170 T 460,120" fill="none" stroke="url(#cyanBlue)" stroke-width="3"/>
+      <!-- Shaded area -->
+      <path d="M 20,210 Q 70,160 130,180 T 240,140 T 350,170 T 460,120 L 460,230 L 20,230 Z" fill="url(#cyanBlue)" opacity="0.12"/>
+      
+      <!-- Table rows mockup -->
+      <rect x="0" y="260" width="490" height="70" rx="8" fill="#0f172a" stroke="#1e293b" stroke-width="1"/>
+      <rect x="16" y="275" width="100" height="8" rx="2" fill="#475569"/>
+      <rect x="16" y="295" width="80" height="8" rx="2" fill="#334155"/>
+      <rect x="150" y="275" width="70" height="8" rx="2" fill="#334155"/>
+      <rect x="150" y="295" width="90" height="8" rx="2" fill="#334155"/>
+      <rect x="380" y="273" width="80" height="18" rx="9" fill="#065f46"/>
+      <text x="398" y="286" fill="#34d399" font-family="sans-serif" font-size="9">To'landi</text>
+    </g>
+  </g>
+</svg>
