@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://mirzayev-jahongir.uz/sitemap.xml
+Sitemap: https://jahongircode.uz/sitemap.xml

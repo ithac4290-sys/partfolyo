@@ -486,7 +486,7 @@ func (app *AppState) sendTelegramNotification(msg Message) {
 	}
 
 	text := fmt.Sprintf(
-		"🔔 *Yangi Murojaat (mirzayev-jahongir.uz)*\n\n"+
+		"🔔 *Yangi Murojaat (jahongircode.uz)*\n\n"+
 			"👤 *Ism:* %s\n"+
 			"📧 *Email:* %s\n"+
 			"📌 *Mavzu:* %s\n"+
