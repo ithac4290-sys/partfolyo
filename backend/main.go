@@ -107,7 +107,7 @@ func main() {
 	handler := app.corsMiddleware(app.loggingMiddleware(mux))
 
 	server := &http.Server{
-		Addr:         ":" + port,
+		Addr:         "127.0.0.1:" + port,
 		Handler:      handler,
 		ReadTimeout:  15 * time.Second,
 		WriteTimeout: 15 * time.Second,
