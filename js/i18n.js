@@ -957,6 +957,9 @@ function initAdminDataSync() {
       if (p.github) {
         document.querySelectorAll('.social-github').forEach(el => el.href = p.github);
       }
+      if (p.instagram) {
+        document.querySelectorAll('.social-instagram').forEach(el => el.href = p.instagram);
+      }
       if (p.linkedin) {
         document.querySelectorAll('.social-linkedin').forEach(el => el.href = p.linkedin);
       }

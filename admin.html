@@ -815,10 +815,10 @@
                 </div>
 
                 <div class="col-md-4">
-                  <label class="form-label small fw-semibold" style="color: var(--heading-color);">LinkedIn profil havola</label>
+                  <label class="form-label small fw-semibold" style="color: var(--heading-color);">Instagram profil / havola</label>
                   <div class="input-group">
-                    <span class="input-group-text bg-transparent border-secondary text-muted"><i class="bi bi-linkedin"></i></span>
-                    <input type="text" id="profLinkedin" class="form-control" value="https://linkedin.com/in/mirzayevjahongir">
+                    <span class="input-group-text bg-transparent border-secondary text-muted"><i class="bi bi-instagram"></i></span>
+                    <input type="text" id="profInstagram" class="form-control" value="https://instagram.com/mirzayevjahongir">
                   </div>
                 </div>
 
@@ -1352,7 +1352,7 @@
       location: "Toshkent, O'zbekiston",
       telegram: "https://t.me/mirzayevjahongir",
       github: "https://github.com/mirzayevjahongir",
-      linkedin: "https://linkedin.com/in/mirzayevjahongir"
+      instagram: "https://instagram.com/mirzayevjahongir"
     };
 
     /* 6 ta haqiqiy SVG loyihalar */
@@ -2206,7 +2206,7 @@
       if (p.location) document.getElementById('profLocation').value = p.location;
       if (p.telegram) document.getElementById('profTelegram').value = p.telegram;
       if (p.github) document.getElementById('profGithub').value = p.github;
-      if (p.linkedin) document.getElementById('profLinkedin').value = p.linkedin;
+      if (p.instagram) document.getElementById('profInstagram').value = p.instagram;
     }
 
     function loadDefaultProfileValues() {
@@ -2220,7 +2220,7 @@
       document.getElementById('profLocation').value = p.location;
       document.getElementById('profTelegram').value = p.telegram;
       document.getElementById('profGithub').value = p.github;
-      document.getElementById('profLinkedin').value = p.linkedin;
+      document.getElementById('profInstagram').value = p.instagram;
       showToast("Tiklandi", "Jahongir Mirzayev standart ma'lumotlari kiritildi", "info");
     }
 
@@ -2236,7 +2236,7 @@
         location: document.getElementById('profLocation').value.trim(),
         telegram: document.getElementById('profTelegram').value.trim(),
         github: document.getElementById('profGithub').value.trim(),
-        linkedin: document.getElementById('profLinkedin').value.trim()
+        instagram: document.getElementById('profInstagram').value.trim()
       };
 
       localStorage.setItem('workfolio_profile', JSON.stringify(profileData));
